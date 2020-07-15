@@ -5,3 +5,26 @@
 ### 덜덜 굵은 글씨
 
 한달간 배운 자바
+
+**굵은 글씨**
+
+***기울인 글씨***
+
+1. 숫자
+1. 헤헷
+1. 올
+
+- 점
+- 두번째 점
+
+`사각형 모양`
+
+```java
+import java.util.*;
+
+public class Hello {
+    public static void main(String args[]) {
+        
+    }
+}
+```
