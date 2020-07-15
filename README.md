@@ -20,7 +20,9 @@
 
 ### 기억해둘 git 명렁어
 
-- `git status`
+- `git status`  // 저장(add)이 제대로 되었는지 확인
+- `git log` // 커밋(commit)이 제대로 되었는지 확인 
+
 - `git add .`
 - `git commit -m '내가 적고 싶은 메시지 ㅎ'`
 - `git push`
