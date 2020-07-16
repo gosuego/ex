@@ -268,3 +268,18 @@ from student
 group by stu_dept;
 --emp 테이블에서 급여가 2000이상 사원들의 부서별 사원수를 출력하시오.
 select deptno,count(*) from emp where sal >=2000 group by deptno;
+
+select deptno,sum(sal) from emp where job <> 'SALESMAN' group by deptno having sum(sal) >= 6500;
+--emp 테이블에서 직무가 세일즈맨이 아닌 사원에 대한 급여가 4000 이상인 부서의 번호와 급여의 합을 출력하시오.
+select deptno,sum(sal) from emp where job <> 'SALESMAN' group by deptno having max(sal) >= 4000;
+
+--1. emp 테이블의 구조를 검색하시오.
+desc emp;
+--2.부서의 부서코드(deptno)와  부서명(ename)을 검색하시오.
+select deptno, dname from dept;
+--3.부서의 부서명과 지역(loc)을 검색하시오.
+select dname, loc from dept;
+--4. 사원들의 급여와 커미션을 검색하시오.
+select sal, comm from emp;
+--5. 사원들의 입사일자의 중복을 제거하고 검색하시오.
+select distinct hiredate from emp;
