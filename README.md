@@ -32,4 +32,4 @@
 - `git config --global user.email "cankate@hanmail.net"`
 - `git config --global user.name "gosuego"`
 
-
+// explorer . 현재 있는 폴더 열기
