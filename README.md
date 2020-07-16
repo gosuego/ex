@@ -33,4 +33,5 @@
 - `git config --global user.name "gosuego"`
 
 // explorer . 현재 있는 폴더 열기
+
 //log 한다음에 press return 하라는데 어떻게 할지 모를 때 Q를 누르면 나감.
