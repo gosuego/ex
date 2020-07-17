@@ -15,64 +15,64 @@ select distinct stu_grade, stu_class from student;
 select stu_no, sub_no, enr_grade, enr_grade+10 from enrol;
 
 select stu_no as ID, stu_name as name from student;
-select stu_no as ÇÐ¹ø, stu_name as ÀÌ¸§ from student;
-select stu_no "ÇÐ¹ø", stu_name "ÀÌ¸§" from student;
+select stu_no as number, stu_name as name from student;
+select stu_no "ï¿½Ð¹ï¿½", stu_name "ï¿½Ì¸ï¿½" from student;
 
-select stu_dept || stu_name as ÇÐ°ú¼º¸í from student;
-select ename || job as ¼º¸íÁ÷¹« from emp;
-select stu_dept || ',' || stu_name || 'ÀÔ´Ï´Ù.' as ÇÐ°ú¼º¸í from student;
+select stu_dept || stu_name as ï¿½Ð°ï¿½ï¿½ï¿½ï¿½ï¿½ from student;
+select ename || job as ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ from emp;
+select stu_dept || ',' || stu_name || 'ï¿½Ô´Ï´ï¿½.' as ï¿½Ð°ï¿½ï¿½ï¿½ï¿½ï¿½ from student;
 
-select ename as ÀÌ¸§, sal as ¿ù±Þ, sal*12 as ¿¬ºÀ from emp;
+select ename as ï¿½Ì¸ï¿½, sal as ï¿½ï¿½ï¿½ï¿½, sal*12 as ï¿½ï¿½ï¿½ï¿½ from emp;
 
 select ename || '''s job is ' || job "NAME AND JOB" from emp;
 
-select stu_name, stu_dept, stu_grade, stu_class from student where stu_dept='ÄÄÇ»ÅÍÁ¤º¸';
--- emp ÇÊµå¿¡¼­ Á÷¹«(job)°¡ 'SALESMAN'ÀÎ »ç¿øÀÇ ename, job, sal, deptno¸¦ °Ë»ö
+select stu_name, stu_dept, stu_grade, stu_class from student where stu_dept='ï¿½ï¿½Ç»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+-- emp ï¿½Êµå¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(job)ï¿½ï¿½ 'SALESMAN'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ename, job, sal, deptnoï¿½ï¿½ ï¿½Ë»ï¿½
 select ename, job, sal, deptno from emp where job='SALESMAN';
-select stu_name, stu_dept, stu_grade, stu_class from student where stu_dept = 'ÄÄÇ»ÅÍÁ¤º¸' and stu_grade=2;
+select stu_name, stu_dept, stu_grade, stu_class from student where stu_dept = 'ï¿½ï¿½Ç»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½' and stu_grade=2;
 
 select * from student where stu_weight between 60 and 70;
--- emp Å×ÀÌºí¿¡¼­ ±Þ¿©(sal)°¡ 1000ºÎÅÍ 1500 »çÀÌÀÇ µ¥ÀÌÅÍ¸¦ °Ë»ö
+-- emp ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¿ï¿½(sal)ï¿½ï¿½ 1000ï¿½ï¿½ï¿½ï¿½ 1500 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Ë»ï¿½
 select * from emp where sal between 1000 and 1500;
 select * from emp where sal >= 1000 and sal <= 1500;
 select * from student where STU_NO between '20140001' and '20149999';
 
--- emp Å×ÀÌºí¿¡¼­ ºÎ¼­¹øÈ£(DEPTNO)°¡ 10ÀÌ°í Á÷¹«(JOB)°¡ 'MANAGER'ÀÎ µ¥ÀÌÅÍ¸¦ °Ë»ö
+-- emp ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¼ï¿½ï¿½ï¿½È£(DEPTNO)ï¿½ï¿½ 10ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½ï¿½(JOB)ï¿½ï¿½ 'MANAGER'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Ë»ï¿½
 select * from emp where DEPTNO=10 and JOB='MANAGER';
 
 -- like
-select stu_no, stu_name, stu_dept from student where stu_name like '±è%';
--- emp Å×ÀÌºí¿¡¼­ »ç¿øÀÌ¸§(ename)Áß JÀÚ·Î ½ÃÀÛÇÏ´Â »ç¿øÀÇ Á¤º¸(empno, ename, job)¸¦ °Ë»ö
+select stu_no, stu_name, stu_dept from student where stu_name like 'ï¿½ï¿½%';
+-- emp ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½(ename)ï¿½ï¿½ Jï¿½Ú·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(empno, ename, job)ï¿½ï¿½ ï¿½Ë»ï¿½
 select empno, ename, job from emp where ename like 'J%';
-select stu_no, stu_name, stu_dept from student where stu_name like '_¼ö%';
+select stu_no, stu_name, stu_dept from student where stu_name like '_ï¿½ï¿½%';
 select * from student where stu_no like '2014%';
--- emp Å×ÀÌºí¿¡¼­ »ç¿øÀÌ¸§(ename)ÀÇ µÎ ¹øÂ° ¹®ÀÚ°¡ 'L'ÀÎ »ç¿øÀÇ empno, ename, job¸¦ °Ë»ö
+-- emp ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½(ename)ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Â° ï¿½ï¿½ï¿½Ú°ï¿½ 'L'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ empno, ename, jobï¿½ï¿½ ï¿½Ë»ï¿½
 select empno, ename, job from emp where ename like '_L%';
 
--- emp Å×ÀÌºí¿¡¼­ ºÎ¼­¹øÈ£(DEPTNO)°¡ 10¹ø ºÎ¼­°¡ ¾Æ´Ñ »ç¿øµéÀ» °Ë»ö
+-- emp ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¼ï¿½ï¿½ï¿½È£(DEPTNO)ï¿½ï¿½ 10ï¿½ï¿½ ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
 select * from emp where not DEPTNO=10;
 select * from emp where deptno <> 10;
 
--- emp Å×ÀÌºí¿¡¼­ ±Þ¿©(sal)°¡ 900 ¹Ì¸¸ÀÌ°Å³ª 4000ÃÊ°úÀÎ »ç¿øÀ» °Ë»ö
+-- emp ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¿ï¿½(sal)ï¿½ï¿½ 900 ï¿½Ì¸ï¿½ï¿½Ì°Å³ï¿½ 4000ï¿½Ê°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
 select * from emp where sal < 900 or sal > 4000;
--- student Å×ÀÌºí¿¡¼­ Å°°¡ 170 ÀÌ»óÀÌ°í ¸ö¹«°Ô°¡ 80KG ÀÌ»óÀÎ µ¥ÀÌÅÍ °Ë»ö
+-- student ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ 170 ï¿½Ì»ï¿½ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô°ï¿½ 80KG ï¿½Ì»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
 select * from student where stu_height >=170 and stu_weight >=80;
 
--- null°ª Ã³¸®
+-- nullï¿½ï¿½ Ã³ï¿½ï¿½
 select stu_no, stu_name, stu_height from student;
 select stu_name, stu_height/30.46 from student;
 select stu_no, stu_name, stu_height from student where stu_height is null;
 select stu_no, stu_name, stu_height from student where stu_height is not null;
--- emp Å×ÀÌºí¿¡¼­ commÀÌ nullÀÎ »ç¿øÀÇ empno, ename, commÀ» °Ë»ö
+-- emp ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ï¿½ï¿½ commï¿½ï¿½ nullï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ empno, ename, commï¿½ï¿½ ï¿½Ë»ï¿½
 select empno, ename, comm from emp where comm is null;
 
--- in ¿¬»êÀÚ
-select stu_no, stu_name from student where stu_dept in ('ÄÄÇ»ÅÍÁ¤º¸','±â°è');
-select stu_no, stu_name from student where stu_dept = 'ÄÄÇ»ÅÍÁ¤º¸' or stu_dept = '±â°è';
--- emp Å×ÀÌºí¿¡¼­ ºÎ¼­¹øÈ£°¡ 10,30ÀÎ ºÎ¼­¿¡ ±Ù¹«ÇÏ´Â »ç¿øÀÇ ¹øÈ£(empno)¿Í ºÎ¼­¹øÈ£(deptno)¸¦ °Ë»ö
+-- in ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+select stu_no, stu_name from student where stu_dept in ('ï¿½ï¿½Ç»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½ï¿½');
+select stu_no, stu_name from student where stu_dept = 'ï¿½ï¿½Ç»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½' or stu_dept = 'ï¿½ï¿½ï¿½';
+-- emp ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¼ï¿½ï¿½ï¿½È£ï¿½ï¿½ 10,30ï¿½ï¿½ ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½Ù¹ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£(empno)ï¿½ï¿½ ï¿½Î¼ï¿½ï¿½ï¿½È£(deptno)ï¿½ï¿½ ï¿½Ë»ï¿½
 select empno, deptno from emp where DEPTNO in (10,30);
 
--- Á¤·Ä
+-- ï¿½ï¿½ï¿½ï¿½
 select stu_no, stu_name from student order by stu_no;
 select stu_no, stu_name from student order by stu_no desc;
 select * from emp order by HIREDATE desc;
@@ -81,7 +81,7 @@ select stu_no, stu_name, stu_dept, stu_weight-5 as target from student order by 
 select stu_no, stu_name, stu_dept, stu_weight-5 as target from student order by 4;
 select stu_no, stu_name, stu_dept, stu_weight-5 as target from student order by stu_weight-5;
 
--- emp Å×ÀÌºí¿¡¼­ ¿¬ºÀÀ» ±âÁØÀ¸·Î ¿À¸§Â÷¼øÀ¸·Î Á¤·Ä
+-- emp ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 select empno, ename, deptno, sal*12 as annualsal from emp order by annualsal;
 select empno, ename, deptno, sal*12 as annualsal from emp order by 4;
 select empno, ename, deptno, sal*12 as annualsal from emp order by sal*12;
@@ -93,7 +93,7 @@ select empno, ename, deptno, sal*12 as annualsal from emp order by deptno, annua
 
 select empno, ename, deptno, sal*12 as annualsal from emp order by hiredate;
 
--- ÇÔ¼ö
+-- ï¿½Ô¼ï¿½
 select round(345.678), round(345.678,0), round(345.678,1), round(345.678,-1) from dual;
 select trunc(997.654,2) "trunc1", trunc(997.654,0) "trunc2", trunc(997.654,-1) "trunc3" from dual;
 select mod(10,3), abs(-100), floor(123.456), power(2,3) from dual;
@@ -117,61 +117,61 @@ select ename,rtrim(ename,'R') from emp where deptno=10;
 
 select ename, replace(ename, substr(ename,1,2),'**') "replace" from emp where deptno=10;
 
---³¯Â¥ÇÔ¼ö
+--ï¿½ï¿½Â¥ï¿½Ô¼ï¿½
 select sysdate from dual;
-select next_day(sysdate,'Åä') from dual;
+select next_day(sysdate,'ï¿½ï¿½') from dual;
 select next_day(sysdate,7) from dual;
 
--- ¿ù Â÷ÀÌ
+-- ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 select months_between('14/09/30','14/08/30') from dual;
 select months_between('14/10/30','14/08/30') from dual;
 select months_between('14/08/31','14/09/30') from dual;
 
--- ¿ù ´õÇÏ±â
+-- ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
 select sysdate,add_months(sysdate,1) from dual;
 
--- ¸¶Áö¸· ³¯ Ãâ·Â
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
 select sysdate,last_day(sysdate) from dual;
 
--- round¿¡¼­ ÇÏ·çÀÇ ¹ÝÀ» ³Ñ±â¸é ´ÙÀ½ ³¯Â¥·Î Ãâ·Â, trunc´Â ¹«Á¶°Ç ´çÀÏ·Î Ç¥½Ã
+-- roundï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ±ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ï¿½, truncï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï·ï¿½ Ç¥ï¿½ï¿½
 select sysdate,round(sysdate),trunc(sysdate) from dual;
 select round(sysdate,'MON') from dual;
 
 select 2+to_number('2') from dual;
 
---TO_CHAR : TO_CHAR ÇÔ¼ö´Â ÁÖ·Î Ãâ·Â¿¡ Çü½ÄÀ» ÁöÁ¤ÇÏ±â À§ÇØ »ç¿ëµÇ¸ç, ³¯Â¥Çü, ¼ýÀÚÇü ¸ðµç µ¥ÀÌÅÍ¿¡ »ç¿ëÇÑ´Ù. 
-select empno, ename, to_char(hiredate,'yyyy-mm')as ÀÔ»ç³â¿ù from emp;          
+--TO_CHAR : TO_CHAR ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½Ö·ï¿½ ï¿½ï¿½Â¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¸ï¿½, ï¿½ï¿½Â¥ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½. 
+select empno, ename, to_char(hiredate,'yyyy-mm')as ï¿½Ô»ï¿½ï¿½ï¿½ from emp;          
 select sysdate, to_char(sysdate,'yyyy'),to_char(sysdate,'yy') from dual;
 select sysdate, to_char(sysdate,'mm'),to_char(sysdate,'month') from dual;
 select sysdate, to_char(sysdate,'dd'),to_char(sysdate,'day') from dual;
 select sysdate, to_char(sysdate,'YYYY-MM-DD:HH24:MI:SS'),to_char(sysdate,'month') from dual;
 
---¿¹½Ã(¼ýÀÚ¸¦ ¹®ÀÚ·Î Ç¥Çö)
+--ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½Ú·ï¿½ Ç¥ï¿½ï¿½)
 select to_char(1234,'99999'), to_char(1234,'099999'), 
 to_char(1234,'$9999'), to_char(1234,'9999.99'), to_char(12345,'99,999') from dual;
 
---TO_NUMBER ÇÔ¼ö TO_NUMBER ÇÔ¼ö´Â ¼ýÀÚ ÇüÅÂÀÇ ¹®ÀÚ¸¦ ¼ýÀÚ·Î º¯È¯ÇÒ ¶§ »ç¿ëÇÑ´Ù.
+--TO_NUMBER ï¿½Ô¼ï¿½ TO_NUMBER ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½Ú·ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 select to_char(to_number(1234.5678), '9999.999') from dual;
 select to_char(to_number(1234.5678),'999.999') from dual;
 
---TO_DATE ÇÔ¼ö : TO_DATE ÇÔ¼ö´Â ³¯Â¥ ÇüÅÂÀÇ ¹®ÀÚ¸¦ ³¯Â¥·Î º¯È¯ÇÒ ¶§ »ç¿ëÇÑ´Ù.
+--TO_DATE ï¿½Ô¼ï¿½ : TO_DATE ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 SELECT EMPNO, ENAME from emp where hiredate = to_date('1980-12-17','yy-mm-dd');
 
---NVL ÇÔ¼ö : ÀÎ¼ö 1ÀÌ nullÀÌ¸é ÀÎ¼ö 2¸¦ ¾Æ´Ï¸é ÀÎ¼ö¸¦ ¹ÝÈ¯ÇÔ
+--NVL ï¿½Ô¼ï¿½ : ï¿½Î¼ï¿½ 1ï¿½ï¿½ nullï¿½Ì¸ï¿½ ï¿½Î¼ï¿½ 2ï¿½ï¿½ ï¿½Æ´Ï¸ï¿½ ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½
 select * from student;
-select nvl(stu_height, 0) from student; --null°ªÀ» 0À¸·Î ¹Ù²Þ
+select nvl(stu_height, 0) from student; --nullï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½
 select ename,comm,nvl(comm,0),nvl(comm,100) from emp where deptno = 30;
 select ename, comm from emp where deptno = 30;
 select*from emp;
 
---NVL2ÇÔ¼ö : ÀÎ¼ö 1ÀÌ nullÀÌ ¾Æ´Ï¸é ÀÎ¼ö 2. nullÀÌ¸é ÀÎ¼ö 3À» ¹ÝÈ¯ÇÔ
+--NVL2ï¿½Ô¼ï¿½ : ï¿½Î¼ï¿½ 1ï¿½ï¿½ nullï¿½ï¿½ ï¿½Æ´Ï¸ï¿½ ï¿½Î¼ï¿½ 2. nullï¿½Ì¸ï¿½ ï¿½Î¼ï¿½ 3ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½
 select ename,sal,comm,nvl2(comm,sal+comm,sal) from emp;
 select ename,sal,comm from emp;
 
---nullif ÇÔ¼ö ÀÎ¼ö 1°ú ÀÎ¼ö 2ÀÇ °ªÀ» ºñ±³ÇÏ¿© ±× °ªÀÌ °°À¸¸é nullÀ» ¾Æ´Ï¸é ÀÎ¼ö 1ÀÇ °ªÀ» º¯È¯ÇÔ
-select nvl(nullif('A','A'), '³Î °ª')from dual; 
+--nullif ï¿½Ô¼ï¿½ ï¿½Î¼ï¿½ 1ï¿½ï¿½ ï¿½Î¼ï¿½ 2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ nullï¿½ï¿½ ï¿½Æ´Ï¸ï¿½ ï¿½Î¼ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½
+select nvl(nullif('A','A'), 'ï¿½ï¿½ ï¿½ï¿½')from dual; 
 
---coalesce ÇÔ¼ö ÀÎ¼öÀÇ 1ÀÇ °ªÀÌ ³Î
+--coalesce ï¿½Ô¼ï¿½ ï¿½Î¼ï¿½ï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 select coalesce(null, null, 10, 100, null) from dual;
 
 select coalesce('A','B','C'),cocalesce(null,'B','C'), coalesce(null,null,'C'),coalesce(null,null,null) from dual;
@@ -182,10 +182,10 @@ case job when 'SALESMAN' then sal*1.1
     when 'CLERK' then sal*1.15 
     when 'MANAGER' then sal*1.2 
     else sal
-end as ±Þ¿©ÀÎ»ó
+end as ï¿½Þ¿ï¿½ï¿½Î»ï¿½
 from emp;
 
---¿¹½Ã
+--ï¿½ï¿½ï¿½ï¿½
 select empno, ename, sal,
 case when sal between 1 and 1000 then 'Level 1'
     when sal between 1001 and 2000 then 'Level 2'
@@ -196,29 +196,29 @@ end "Level"
 from emp
 order by sal desc;
 
---DECODE ÇÔ¼ö
+--DECODE ï¿½Ô¼ï¿½
 select empno, ename, job, sal, decode(job, 'SALESMAN',sal*1.1,
 'CLEGK', sal*1.15,
 'MANAGER',sal*1.2,
-sal)as ÀÎ»óµÈ±Þ¿©
+sal)as ï¿½Î»ï¿½È±Þ¿ï¿½
 from emp;
 
---MAX¿Í MINÇÔ¼ö
+--MAXï¿½ï¿½ MINï¿½Ô¼ï¿½
 select max(enr_grade), min(enr_grade) from enrol;
-select min(stu_weight), max(stu_weight) from student where stu_dept ='±â°è';
+select min(stu_weight), max(stu_weight) from student where stu_dept ='ï¿½ï¿½ï¿½';
 
---count ÇÔ¼ö
+--count ï¿½Ô¼ï¿½
 SELECT*FROM STUDENT;
-select count(*),count(stu_height) from student;  --null °ª Á¦¿Ü ¼ö ¼¼±â
-select count(stu_dept), count(distinct stu_dept) from student;  --Áßº¹Á¦°Å
+select count(*),count(stu_height) from student;  --null ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+select count(stu_dept), count(distinct stu_dept) from student;  --ï¿½ßºï¿½ï¿½ï¿½ï¿½ï¿½
 
---sum°ú avgÇÔ¼ö
-select sum(stu_weight), to_char(avg(stu_weight), '9999.00') from student where stu_dept = 'ÄÄÇ»ÅÍÁ¤º¸';
-select count(*)as ÇÐ»ý, sum(stu_height)as ½ÅÀåÇÕ, 
-count(stu_height) "ÇØ´çÇÐ»ý¼ö", avg(stu_height) "Æò±Õ½ÅÀå" 
+--sumï¿½ï¿½ avgï¿½Ô¼ï¿½
+select sum(stu_weight), to_char(avg(stu_weight), '9999.00') from student where stu_dept = 'ï¿½ï¿½Ç»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+select count(*)as ï¿½Ð»ï¿½, sum(stu_height)as ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 
+count(stu_height) "ï¿½Ø´ï¿½ï¿½Ð»ï¿½ï¿½ï¿½", avg(stu_height) "ï¿½ï¿½Õ½ï¿½ï¿½ï¿½" 
 from student;
 
---emp Å×ÀÌºí Áý°èÇÕ¼ö(±×·ìÇÔ¼ö)
+--emp ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½(ï¿½×·ï¿½ï¿½Ô¼ï¿½)
 select*from emp;
 select count(*) from emp;
 select sum(sal) from emp;
@@ -226,28 +226,28 @@ select to_char(avg(sal),'99999.99') from emp;
 select min(sal) from emp;
 select max(sal) from emp;
 
----empÅ×ÀÌºí¿¡¼­ jobÀÇ °³¼ö¸¦ °Ë»öÇÏ½Ã¿À.(´Ü Áßº¹Á¦°Å)
-select count(distinct job)as "¾÷¹«¼ö"from emp;
+---empï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ï¿½ï¿½ jobï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ï½Ã¿ï¿½.(ï¿½ï¿½ ï¿½ßºï¿½ï¿½ï¿½ï¿½ï¿½)
+select count(distinct job)as "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"from emp;
 
---¿À´ÃÀ» ±âÁØÀ¸·Î 100ÀÏ ÀÌÀüÀÇ ³¯Â¥
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 100ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥
 select sysdate-100 from dual;
---¿À´ÃÀ» ±âÁØÀ¸·Î 100ÀÏ ÀÌÈÄÀÇ ³¯Â¥
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 100ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥
 select sysdate+100 from dual;
 
---°¡Àå Å« °ª
+--ï¿½ï¿½ï¿½ï¿½ Å« ï¿½ï¿½
 select greatest(10,30,50,80) from dual;
---°¡Àå ÀÛÀº °ª
+--ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 select least(10,30,50,80)from dual;
 
---rownum : ·¹ÄÚµåÀÇ ¼ø¹ø
+--rownum : ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 select rownum, empno,ename from emp;
 select * from emp;
---¸Þ´ÏÀúÀÇ ¿¬ºÀÀÇ ÇÕ°ú ±× Æò±Õ
+--ï¿½Þ´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Õ°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
 select sum(sal), to_char(avg(sal),'9999,99')
 from emp
 where job = 'MANAGER';
 
---GROUP BYÀý
+--GROUP BYï¿½ï¿½
 select stu_dept, count(*) from student
 where stu_weight >= 50
 group by stu_dept;
@@ -256,30 +256,30 @@ select*from student;
 select*from emp;
 select deptno, sum(sal) from emp 
 group by deptno;
---´ÙÁß¿­ Gorup byÀý
+--ï¿½ï¿½ï¿½ß¿ï¿½ Gorup byï¿½ï¿½
 select stu_dept, stu_grade, count(*) from student group by stu_dept, stu_grade;;
 
---havingÀý »ç¿ë
-select stu_grade, avg(stu_height) from student where stu_dept ='±â°è' 
+--havingï¿½ï¿½ ï¿½ï¿½ï¿½
+select stu_grade, avg(stu_height) from student where stu_dept ='ï¿½ï¿½ï¿½' 
 group by stu_grade having avg(stu_height)>=160;
 select stu_dept, max(stu_height) from student group by stu_dept having max(stu_height)>=175;
 select to_char(max(avg(stu_height)),'999.99')
 from student 
 group by stu_dept;
---emp Å×ÀÌºí¿¡¼­ ±Þ¿©°¡ 2000ÀÌ»ó »ç¿øµéÀÇ ºÎ¼­º° »ç¿ø¼ö¸¦ Ãâ·ÂÇÏ½Ã¿À.
+--emp ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¿ï¿½ï¿½ï¿½ 2000ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï½Ã¿ï¿½.
 select deptno,count(*) from emp where sal >=2000 group by deptno;
 
 select deptno,sum(sal) from emp where job <> 'SALESMAN' group by deptno having sum(sal) >= 6500;
---emp Å×ÀÌºí¿¡¼­ Á÷¹«°¡ ¼¼ÀÏÁî¸ÇÀÌ ¾Æ´Ñ »ç¿ø¿¡ ´ëÇÑ ±Þ¿©°¡ 4000 ÀÌ»óÀÎ ºÎ¼­ÀÇ ¹øÈ£¿Í ±Þ¿©ÀÇ ÇÕÀ» Ãâ·ÂÇÏ½Ã¿À.
+--emp ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¿ï¿½ï¿½ï¿½ 4000 ï¿½Ì»ï¿½ï¿½ï¿½ ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½Þ¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï½Ã¿ï¿½.
 select deptno,sum(sal) from emp where job <> 'SALESMAN' group by deptno having max(sal) >= 4000;
 
---1. emp Å×ÀÌºíÀÇ ±¸Á¶¸¦ °Ë»öÇÏ½Ã¿À.
+--1. emp ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ï½Ã¿ï¿½.
 desc emp;
---2.ºÎ¼­ÀÇ ºÎ¼­ÄÚµå(deptno)¿Í  ºÎ¼­¸í(ename)À» °Ë»öÇÏ½Ã¿À.
+--2.ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½Î¼ï¿½ï¿½Úµï¿½(deptno)ï¿½ï¿½  ï¿½Î¼ï¿½ï¿½ï¿½(ename)ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ï½Ã¿ï¿½.
 select deptno, dname from dept;
---3.ºÎ¼­ÀÇ ºÎ¼­¸í°ú Áö¿ª(loc)À» °Ë»öÇÏ½Ã¿À.
+--3.ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(loc)ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ï½Ã¿ï¿½.
 select dname, loc from dept;
---4. »ç¿øµéÀÇ ±Þ¿©¿Í Ä¿¹Ì¼ÇÀ» °Ë»öÇÏ½Ã¿À.
+--4. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¿ï¿½ï¿½ï¿½ Ä¿ï¿½Ì¼ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ï½Ã¿ï¿½.
 select sal, comm from emp;
---5. »ç¿øµéÀÇ ÀÔ»çÀÏÀÚÀÇ Áßº¹À» Á¦°ÅÇÏ°í °Ë»öÇÏ½Ã¿À.
+--5. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ßºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ë»ï¿½ï¿½Ï½Ã¿ï¿½.
 select distinct hiredate from emp;
