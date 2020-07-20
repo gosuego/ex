@@ -109,11 +109,28 @@ date = 날짜
 conn 유저 바꾸기
 
 제 3장
+테이블 구조
+describe /desc 테이블 구조를 알기 위한 명령어
 
-Asc  오름차순 -갈수록 커지는 수의 나열
+중복행 제거 
+distinct
+'select distinct stu_dept from student;'
+
+조건 where 
+where and 조건 두개
+between ~and 
+where 필드명 like %전체_한글자
+
+null/is nor null
+in
+
+정렬 order by
+Asc  오름차순 -갈수록 커지는 수의 나열(디폴트 값)
 Desc 내림차순 -갈수록 작은수의 나열
-
-함수
+order by 숫자는 숫자번째를 기준
+order by 별칭을 써서 정렬가능
+ 
+ 함수
 
 숫자함수
 ROUND
@@ -130,8 +147,18 @@ next_day(sysdate, 'wed')
 요일에 해당하는 숫자를 이용할 수 있다.
 일,1 월,2 화,3 수,4 목,5 금,6 토,7
 
-중복행 제거 
-'select distinct stu_dept from student;'
+to_number/to_Date/to_char
+
+
+nvl()함수*
+null 값 채워넣기
+
+
+case 조건 함수
+
+평균avg 최대값max 최소값min 합sum 숫자세기count(*)
+
+where(조건) ~ group by ~ having(조건)
 
 where절 사용하기 
 -일반적으로 비교연산자를 사용한다. 
@@ -141,3 +168,41 @@ where절 사용하기
 db 용량에 한계가 있다. 
 관리하는 것을 다 정리해놓는다. 
 ex) 인간관계 
+
+
+4장 조인
+
+CROSS 조인
+select student.*, enrol.* from student cross join enrol;
+'select student.*,enrol.* 
+from student cross join enrol;'
+
+join조인
+select student.stu_no, stu_name from student, enrol 
+where student.stu_no = enrol.stu_no and
+sub_no = 101;
+
+EQUI 조인
+2개 이상의 테이블에 관련 있는 공통 열의 값을 이용하여 논리적으로 결합하는 연산이 수행되는 조인
+select student.stu_no,stu_name,stu_dept,enr_grade
+from student, enrol
+where student.stu_no = enrol.stu_no;
+
+natural join / join enrol using / join enrol on
+
+
+Non-EQUI
+EQUI를 쓰지 않고 betweend을 사용하여 조인
+
+Self 조인
+같은 테이블간의 조인, 테이블의 별칭을 사용함 
+select a.empno as 사원번호, a.ename as 사원이름, 
+b.empno as 상급자사원번호, b.ename as 상급자이름
+from emp a, emp b
+where a.mgr = b.empno
+
+Outer 조인
+rigth outer
+life outer
+full outer 
+
