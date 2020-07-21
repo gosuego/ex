@@ -1022,8 +1022,20 @@ where sub_no = (select sub_no from subject
                 where sub_name = '시스템분석설계';
                 
 delete from a_enrol
+
 where stu_no = 20131001;
 
 delete from a_enrol;
 
 drop table a_enrol;
+delete from b_student;
+
+select * from b_student;
+
+rollback;
+
+create table c_student
+(stu_no number,
+stu_name char(10));
+
+select*from a_student;

@@ -252,3 +252,13 @@ insert
 	
 	테이블 지우기
 	drop table
+
+트랜잭션
+
+	삭제된 데이터 복구
+	rollback;
+	
+	
+	create table새로운 테이블이 생성 되면 자동적으로 롤백 기능 상실 . 
+	commit -완료
+	
