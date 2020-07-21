@@ -211,4 +211,44 @@ full outer
 
 부징의의 질의문을 조인 질의로 표현 가능하다.
 
+제 5장
 
+DDL(데이터 정의)
+DML(데이터 조작어)
+DCL(데이터 제어어)
+
+insert
+	새로운 데이터를 테이블에 삽입하는 연산
+
+#단일 튜블 삽입
+	테이블 생성
+	create table ~
+	
+	행삽입	(insert)
+	insert into ~ 
+	values (~)
+	
+	부질의 값 삽입 단 부질의 결과의 열의 위치 및 수가 테이블과 일치하여야 한다.
+	insert into ~
+	select ~
+	
+	기존 테이블 수정(update)
+	update ~
+	set ~
+	
+	조건에 맞는 아이들만 수정
+	update (테이블)
+	set ~
+	where (조건)
+	
+	
+	데이타 지우기 (delete)
+	delete ~
+	from ~
+	where ~
+	
+	테이블 내의 모든 데이터가 삭제
+	delete from ~
+	
+	테이블 지우기
+	drop table
