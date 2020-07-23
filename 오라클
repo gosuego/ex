@@ -1039,3 +1039,38 @@ create table c_student
 stu_name char(10));
 
 select*from a_student;
+
+desc tmpa_emp;
+select*from tmpa_emp;
+
+insert into tmpa_emp(empno,ename,hirdate,sal,deptno)
+values(1,'kim',to_date('2013-01-01'),700,40);
+
+insert into tmpa_emp(empno,ename,hirdate,sal,deptno)
+values(2,'kang',to_date('2013-01-01'),800,40);
+
+insert into tmpa_emp(empno,ename,hirdate)
+values(3,'kho',to_date('2013-01-01'));
+
+insert into tmpa_emp(empno,ename)
+values(4,'lee');
+
+select user,sysdate
+from dual;
+
+insert into tmpa_emp(empno,ename,hirdate,sal,deptno)
+values(5,'park',sysdate,850,20);
+
+--예시
+
+create table t_readonly(
+no number, 
+name varchar2(10));
+
+insert into t_readonly values(1,'AAA');
+select * from t_readonly;
+commit;
+
+--읽기 전형으로 변경한다.
+
+alter table t_readonly read only;
