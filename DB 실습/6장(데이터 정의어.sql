@@ -1,7 +1,7 @@
---6Àå(µ¥ÀÌÅÍ Á¤ÀÇ¾î)
+--6ì¥(ë°ì´í„° ì •ì˜ì–´)
 create table testk (u_id varchar2(10),u_date date);
 create table t_student 
-as select * from student where stu_dept='±â°è';
+as select * from student where stu_dept='ê¸°ê³„';
 desc t_student;
 select * from t_student;
  
@@ -16,13 +16,13 @@ alter table t_student drop (army);
 rename t_student to test_student;
 desc test_student;
 
-truncate table test_student;--±¸Á¶µµ ÇÔ²² ´Ù »èÁ¦
-delete table test_student;-- ±¸Á¶´Â ³²±â°í µ¥ÀÌÅÍ »èÁ¦
+truncate table test_student;--êµ¬ì¡°ë„ í•¨ê»˜ ë‹¤ ì‚­ì œ
+delete table test_student;-- êµ¬ì¡°ëŠ” ë‚¨ê¸°ê³  ë°ì´í„° ì‚­ì œ
 select*from test_student;
-drop table test_student;--Å×ÀÌºí »èÁ¦
+drop table test_student;--í…Œì´ë¸” ì‚­ì œ
 
---Å×ÀÌºí »ı¼º, ±¸Á¶ º¯°æ, »èÁ¦ ¹®Á¦
---1. »ç¿ø Á¤º¸¸¦ ÀúÀåÇÏ±â À§ÇÑ Å×ÀÌºí »ı¼º ÈÄ È®ÀÎ
+--í…Œì´ë¸” ìƒì„±, êµ¬ì¡° ë³€ê²½, ì‚­ì œ ë¬¸ì œ
+--1. ì‚¬ì› ì •ë³´ë¥¼ ì €ì¥í•˜ê¸° ìœ„í•œ í…Œì´ë¸” ìƒì„± í›„ í™•ì¸
 create table emp01(
 empno number(4),
 ename varchar2(14),
@@ -30,15 +30,15 @@ sal number(7,3));
 
 desc emp01;
 
---2. »ç¿øÅ×ÀÌºí¿¡ ³¯Â¥ Å¸ÀÔÀ» °¡Áö´Â birth ÄÃ·³ Ãß°¡ÇÑ ÈÄ È®ÀÎ(add)
+--2. ì‚¬ì›í…Œì´ë¸”ì— ë‚ ì§œ íƒ€ì…ì„ ê°€ì§€ëŠ” birth ì»¬ëŸ¼ ì¶”ê°€í•œ í›„ í™•ì¸(add)
 alter table emp01
 add (birth date);
  desc emp01;
---3. »ç¿ø ÀÌ¸§ ÄÃ·³ Å©±â (30) º¯°æ ÈÄ È®ÀÎ(modify)
+--3. ì‚¬ì› ì´ë¦„ ì»¬ëŸ¼ í¬ê¸° (30) ë³€ê²½ í›„ í™•ì¸(modify)
 alter table emp01
 modify(ename varchar2(30));
  desc emp01;
---4. »ç¿øÅ×ÀÌºí¿¡¼­ ÀÌ¸§ Ä®·³ Á¦°ÅÇÑ ÈÄ È®ÀÎ
+--4. ì‚¬ì›í…Œì´ë¸”ì—ì„œ ì´ë¦„ ì¹¼ëŸ¼ ì œê±°í•œ í›„ í™•ì¸
 alter table emp01
 drop(ename);
  desc emp01;
@@ -46,15 +46,15 @@ drop(ename);
 alter table emp01
 set unused(empno);
  desc emp01;
- --unused Ç¥½Ã
+ --unused í‘œì‹œ
  select*from DBA_UNUSED_COL_TABS;
---6. unused·Î Ç¥½ÃµÈ ¸ğµç ÄÃ·³À» Á¦°ÅÇÏ±â
+--6. unusedë¡œ í‘œì‹œëœ ëª¨ë“  ì»¬ëŸ¼ì„ ì œê±°í•˜ê¸°
 alter table emp01
 drop unused columns;
---7. Å×ÀÌºí ÀÌ¸§ º¯°æ (emp02) ÈÄ È®ÀÎ
+--7. í…Œì´ë¸” ì´ë¦„ ë³€ê²½ (emp02) í›„ í™•ì¸
 rename emp01 to emp02;
  desc emp02;
---8. »ç¿øÅ×ÀÌºí (emp02) Á¦°ÅÇÏ±â ÈÄ È®ÀÎ
+--8. ì‚¬ì›í…Œì´ë¸” (emp02) ì œê±°í•˜ê¸° í›„ í™•ì¸
 truncate table emp02;
 drop table emp02;
 
@@ -69,7 +69,7 @@ stu_height number(5,2),
 stu_weight number(5,2),
 constraint p_stu_no primary key(stu_no)
 );
-commit;
+
 create table t_enrol(
 sub_no char(3),
 stu_no char(9),
@@ -78,7 +78,8 @@ constraint enr_stu_no foreign key(stu_no) references t_student(stu_no),
 constraint p_enol primary key(sub_no, stu_no)
 );
 
---Á¦¾àÁ¶°Ç Á¦¾àÁ¶°ÇÀ» È®ÀÎ ÇÒ¶§´Â ´ë¹®ÀÚ.
+
+--ì œì•½ì¡°ê±´ ì œì•½ì¡°ê±´ì„ í™•ì¸ í• ë•ŒëŠ” ëŒ€ë¬¸ì.
 select*from user_constraints 
 where table_name = 'T_STUDENT';
 select*from user_constraints 
@@ -88,11 +89,11 @@ desc t_student;
 
 select constraint_name,table_name, column_name 
 from user_cons_columns;
---Á¦¾à Á¶°ÇÀÇ »èÁ¦
+--ì œì•½ ì¡°ê±´ì˜ ì‚­ì œ
 alter table t_enrol drop constraints enr_stu_no cascade; 
-select*from user_constraints  --È®ÀÎ
+select*from user_constraints  --í™•ì¸
 where table_name = 'T_ENROL';
---Á¦¾àÁ¶°ÇÀÇ È°¼ºÈ­, ºñÈ°¼ºÈ­
+--ì œì•½ì¡°ê±´ì˜ í™œì„±í™”, ë¹„í™œì„±í™”
 select*from user_constraints 
 where table_name = 'T_STUDENT';
 alter table t_student 
@@ -109,7 +110,7 @@ deptno number(2)
 select*from emp01;
 
 insert into emp01
-values(null,null,'»ç¿ø',30);
+values(null,null,'ì‚¬ì›',30);
 
 select constraint_name, constraint_type, table_name
 from user_constraints
@@ -123,19 +124,19 @@ create table emp02(
 );
 
 insert into emp02
-values(null,null,'»ç¿ø',30);
+values(null,null,'ì‚¬ì›',30);
 
 select constraint_name, constraint_type, table_name
 from user_constraints
 where table_name = 'emp02';
 insert into emp02
-values(1000,'ÇãÁØ','»ç¿ø',30);
+values(1000,'í—ˆì¤€','ì‚¬ì›',30);
 select * from emp02;
 insert into emp02
-values (1000,'È«±æµ¿','°úÀå',20);
+values (1000,'í™ê¸¸ë™','ê³¼ì¥',20);
 commit;
 create table emp03(
- empno number(4) unique, --Áßº¹ÀÌ ¾ÈµÇ°í ³ÎÀº µé¾î°¥ ¼ö ÀÖ´Ù. ±×·¸´Ù¸é ÇÁ¶óÀÌ¸Ó¸®Å°´Â?
+ empno number(4) unique, --ì¤‘ë³µì´ ì•ˆë˜ê³  ë„ì€ ë“¤ì–´ê°ˆ ìˆ˜ ìˆë‹¤. ê·¸ë ‡ë‹¤ë©´ í”„ë¼ì´ë¨¸ë¦¬í‚¤ëŠ”?
  ename varchar2(10) not null,
  job varchar2(9),
  deptno number(2)
@@ -143,11 +144,11 @@ create table emp03(
 select * from emp03;
 
 insert into emp03
-values(1000,'ÇãÁØ','»ç¿ø',30);
+values(1000,'í—ˆì¤€','ì‚¬ì›',30);
 insert into emp03
-values (1000,'È«±æµ¿','°úÀå',20);
+values (1000,'í™ê¸¸ë™','ê³¼ì¥',20);
 insert into emp03
-values (null,'¾ÈÁß±Ù','°úÀå',20);
+values (null,'ì•ˆì¤‘ê·¼','ê³¼ì¥',20);
 
 create table emp04(
 empno number(4) constraint emp04_empno_uk unique,
@@ -161,12 +162,12 @@ from user_constraints
 where table_name in('EMP04');
 
 insert into emp04
-values (1000,'ÇãÁØ','»ç¿ø',30);
+values (1000,'í—ˆì¤€','ì‚¬ì›',30);
 
 select *from emp04;
 rollback;
 insert into emp04
-values (1000, 'È«±æµ¿','°úÀå',20);
+values (1000, 'í™ê¸¸ë™','ê³¼ì¥',20);
 
 create table emp05(
 empno number(4) constraint emp05_empno_pk primary key,
@@ -180,13 +181,13 @@ from user_constraints
 where table_name in('EMP05');
 select * from emp05;
 insert into emp05
-values (1000 ,'ÇãÁØ','»ç¿ø',30);
- --pk´Â ±âº»ÀûÀ¸·Î ÇÏ³ª¹Û¿¡ ¾ÈµÊ Áßº¹ÀÌ µÇ¸é °É·Á¹ö¸² (uniqe)
+values (1000 ,'í—ˆì¤€','ì‚¬ì›',30);
+ --pkëŠ” ê¸°ë³¸ì ìœ¼ë¡œ í•˜ë‚˜ë°–ì— ì•ˆë¨ ì¤‘ë³µì´ ë˜ë©´ ê±¸ë ¤ë²„ë¦¼ (uniqe)
 insert into emp05
-values(1000, 'È«±æµ¿', '°úÀå',20); 
---pk´Â ³Î°ªÀÌ ¾È‰Î.
+values(1000, 'í™ê¸¸ë™', 'ê³¼ì¥',20); 
+--pkëŠ” ë„ê°’ì´ ì•ˆëŒ.
 insert into emp05
-values(null,'ÀÌ¼ø½Å','ºÎÀå',10);
+values(null,'ì´ìˆœì‹ ','ë¶€ì¥',10);
 commit;
 
 create table emp07(
@@ -205,20 +206,20 @@ from user_constraints
 where table_name in('EMP07');
 
 insert into emp07
-values (1000,'ÇãÁØ',600,'M');
+values (1000,'í—ˆì¤€',600,'M');
 select*from emp07;
 
 create table dept01(
  deptno number(2) primary key,
  dname varchar2(14),
- loc varchar2(13) default'¼­¿ï'
+ loc varchar2(13) default'ì„œìš¸'
 );
 select *from dept01;
 
 insert into dept01
-values (000,'°í¼öÇö','¿ï»ê');
+values (000,'ê³ ìˆ˜í˜„','ìš¸ì‚°');
 insert into dept01(deptno, dname)
-values (002,'°í¼öÇö');
+values (002,'ê³ ìˆ˜í˜„');
 drop table dept01;
 delete table dept01;
 
@@ -261,7 +262,7 @@ from user_constraints
 where table_name in('EMP11');
 
 
---±âº»Å°°¡ 2°³ÀÇ ÄÃ·³À¸·Î ±¸¼ºµÈ °æ¿ì
+--ê¸°ë³¸í‚¤ê°€ 2ê°œì˜ ì»¬ëŸ¼ìœ¼ë¡œ êµ¬ì„±ëœ ê²½ìš°
 create table member01(
  name varchar2(10),
  address varchar2(30),
@@ -297,28 +298,28 @@ modify ename constraint emp01_ename_nn not null;
 alter table emp01
 drop primary key;
 
--- view ºä
-create or replace view v_student1 -- »õ·Î ¸¸µé°Å³ª Àç±¸¼º ÇÏ´Ù. 
+-- view ë·°
+create or replace view v_student1 -- ìƒˆë¡œ ë§Œë“¤ê±°ë‚˜ ì¬êµ¬ì„± í•˜ë‹¤. 
 as 
-select * from student where stu_dept = 'ÄÄÇ»ÅÍÁ¤º¸';
+select * from student where stu_dept = 'ì»´í“¨í„°ì •ë³´';
 
 select *from v_student1;
 
---¿¹½Ã
---emp Å×ÀÌºí¿¡¼­ deptno°¡ 20ÀÎ µ¥ÀÌÅÍ¸¦ ¼öÁıÇÏ¿© °¡»óÀÇ Å×ÀÌºí(v_emp1)¸¦ ¸¸µå½Ã¿À.
+--ì˜ˆì‹œ
+--emp í…Œì´ë¸”ì—ì„œ deptnoê°€ 20ì¸ ë°ì´í„°ë¥¼ ìˆ˜ì§‘í•˜ì—¬ ê°€ìƒì˜ í…Œì´ë¸”(v_emp1)ë¥¼ ë§Œë“œì‹œì˜¤.
 create or replace view v_emp1
 as 
 select *from emp where deptno=20;
 
 select* from v_emp1;
---Á¶ÀÎºä
+--ì¡°ì¸ë·°
 create or replace view v_enrol1
 as select sub_name, a.sub_no, stu_no, enr_grade
 from enrol a, subject b
 where a.sub_no = b.sub_no;
 
 select * from v_enrol1;
---Á¶ÀÎºä ¿¹½Ã
+--ì¡°ì¸ë·° ì˜ˆì‹œ
 create or replace view v_emp2
 as 
 select empno,ename,mgr,hiredate,sal,dept.dname
@@ -326,7 +327,7 @@ from emp, dept
 where emp.deptno = dept.deptno;
 
 select * from v_emp2;
---ÀÎ¶óÀÎºä
+--ì¸ë¼ì¸ë·°
 select stu_no,stu_name,a.stu_dept,stu_height
 from student a, (select stu_dept, avg(stu_height)
                 as avg_height
@@ -334,22 +335,22 @@ from student a, (select stu_dept, avg(stu_height)
                 group by stu_dept)b
 where a.stu_dept = b.stu_dept
 and a.stu_height > b.avg_height;
---ÀÎ¶óÀÎºä ¿¹½Ã
---ºÎ¼­º° »ç¿ø Áß ±Ş¿©¸¦ °¡Àå ¸¹ÀÌ ¹Ş´Â »ç¿øÀÇ Á¤º¸¸¦ °Ë»öÇÏ½Ã¿À.
+--ì¸ë¼ì¸ë·° ì˜ˆì‹œ
+--ë¶€ì„œë³„ ì‚¬ì› ì¤‘ ê¸‰ì—¬ë¥¼ ê°€ì¥ ë§ì´ ë°›ëŠ” ì‚¬ì›ì˜ ì •ë³´ë¥¼ ê²€ìƒ‰í•˜ì‹œì˜¤.
 select a.empno,a.ename,a.sal,c.dname
 from emp a, (select deptno,max(sal) maxsal
             from emp 
             group by deptno)b,dept c
 where a.deptno=b.deptno and a.sal=b.maxsal and a.deptno = c.deptno
 order by a.deptno;
---top-n ÁúÀÇ 
+--top-n ì§ˆì˜ 
 select stu_no, stu_name, stu_height
 from (select stu_no, stu_name, stu_height
         from student
         where stu_height is not null
         order by stu_height desc)
 where rownum <=5;
---emp Å×ÀÌºí¿¡¼­ ±Ş¿©¸¦ °¡Àå ¸¹ÀÌ ¹Ş´Â 5¸íÀÇ »ç¿ø¹øÈ£, ÀÌ¸§, ±Ş¿©¸¦ °Ë»öÇÏ½Ã¿À.
+--emp í…Œì´ë¸”ì—ì„œ ê¸‰ì—¬ë¥¼ ê°€ì¥ ë§ì´ ë°›ëŠ” 5ëª…ì˜ ì‚¬ì›ë²ˆí˜¸, ì´ë¦„, ê¸‰ì—¬ë¥¼ ê²€ìƒ‰í•˜ì‹œì˜¤.
 select empno,ename,sal
 from (select empno,ename,sal
         from emp
@@ -357,13 +358,13 @@ from (select empno,ename,sal
         order by sal desc)
 where rownum <= 5;
 
---ÇĞ»ıÀÇ ÀÌ¸§À¸·Î ÀÎµ¦½º »ı¼º
+--í•™ìƒì˜ ì´ë¦„ìœ¼ë¡œ ì¸ë±ìŠ¤ ìƒì„±
 create index i_stu_name on student(stu_name);
---ÇĞ»ıÀÇ ÇĞ¹ø°ú ÀÌ¸§À» ÇÕÃÄ¼­ ÀÎµ¦½º¸¦ »ı¼º
+--í•™ìƒì˜ í•™ë²ˆê³¼ ì´ë¦„ì„ í•©ì³ì„œ ì¸ë±ìŠ¤ë¥¼ ìƒì„±
 create index i_stu_no_name on student(stu_no,stu_name);
---À¯ÀÏÇÑ °ªÀ¸·Î ÀÎµ¦½º »ı¼º
+--ìœ ì¼í•œ ê°’ìœ¼ë¡œ ì¸ë±ìŠ¤ ìƒì„±
 create unique index i_stu_name on student(stu_name);
---ÇÔ¼ö³ª ¼ö½ÄÀ» ÀÌ¿ëÇÏ¿© ÀÎµ¦½º »ı¼º
+--í•¨ìˆ˜ë‚˜ ìˆ˜ì‹ì„ ì´ìš©í•˜ì—¬ ì¸ë±ìŠ¤ ìƒì„±
 create index i_stu_weight on student(stu_weight-5);
 
 select*from user_indexes
@@ -371,7 +372,7 @@ where table_name = 'STUDENT';
 
 drop index i_stu_name;
 
---½ÃÄı½º °Ô½ÃÆÇ ¸¸µé ¶§ ½á¸ÔÀ» ¼ö ÀÖÀ½.
+--ì‹œí€¸ìŠ¤ ê²Œì‹œíŒ ë§Œë“¤ ë•Œ ì¨ë¨¹ì„ ìˆ˜ ìˆìŒ.
 create sequence seq1
 increment by 2
 start with 1000
@@ -381,7 +382,7 @@ select seq1.nextval from dual;
 select seq1.currval from dual;
 run;
 
---ºä ¿¹Á¦
+--ë·° ì˜ˆì œ
 
 select *from emp
 where deptno=30;
@@ -392,7 +393,7 @@ where deptno =30;
 
 select * from v_emp30;
 
---empÅ×ÀÌºí¿¡¼­ deptno°¡ 10¹ø »ç¿øÀÇ empno,ename,job,sal¸¦ °Ë»öÇØ¼­ (v_emp10)ÀÇ °¡»óÅ×ÀÌºíÀ» ¸¸µå½Ã¿À.
+--empí…Œì´ë¸”ì—ì„œ deptnoê°€ 10ë²ˆ ì‚¬ì›ì˜ empno,ename,job,salë¥¼ ê²€ìƒ‰í•´ì„œ (v_emp10)ì˜ ê°€ìƒí…Œì´ë¸”ì„ ë§Œë“œì‹œì˜¤.
 select * from emp where deptno=10;
 create or replace view v_emp10
 as select empno, ename,job,sal 
@@ -407,8 +408,8 @@ increment by 1
 start with 1
 maxvalue 100;
 
-select seq2.nextval from dual; --ÀÚµ¿ Áõ°¡ °ª
-select seq2.currval from dual; --ÇöÀç ³ªÀÇ ¼ıÀÚ
+select seq2.nextval from dual; --ìë™ ì¦ê°€ ê°’
+select seq2.currval from dual; --í˜„ì¬ ë‚˜ì˜ ìˆ«ì
 
 alter sequence seq2
 increment by 2
@@ -436,20 +437,20 @@ from user_constraints
 where table_name in('EMP12');
 
 insert into emp12
-values(emp_seq.nextval,'°­°¨Âù',SYSDATE);
+values(emp_seq.nextval,'ê°•ê°ì°¬',SYSDATE);
 insert into emp12
-values(emp_seq.nextval,'ÀÌ¼ø½Å',SYSDATE);
+values(emp_seq.nextval,'ì´ìˆœì‹ ',SYSDATE);
 insert into emp12
-values(emp_seq.nextval,'Á¾´ë¿Õ',SYSDATE);
+values(emp_seq.nextval,'ì¢…ëŒ€ì™•',SYSDATE);
 insert into emp12
-values(emp_seq.nextval,'À±ºÀ±æ',SYSDATE);
+values(emp_seq.nextval,'ìœ¤ë´‰ê¸¸',SYSDATE);
 insert into emp12
-values(emp_seq.nextval,'¸Ş·Õ',SYSDATE);
+values(emp_seq.nextval,'ë©”ë¡±',SYSDATE);
 
 select sequence_name, min_value, max_value, increment_by
 from user_sequences;
 
---ºä¿Í rownum ÄÃ·³À¸·Î top-n
+--ë·°ì™€ rownum ì»¬ëŸ¼ìœ¼ë¡œ top-n
 create or replace view view_hire
 as
 select empno,ename,hiredate 
@@ -463,7 +464,7 @@ select rownum,empno,ename,hiredate
 from view_hire
 where rownum <=10;
 
---ÀÎ¶óÀÎ ºä·Î top-n ±¸ÇÏ±â
+--ì¸ë¼ì¸ ë·°ë¡œ top-n êµ¬í•˜ê¸°
 select rownum,empno,ename,hiredate
 from (select * from view_hire)
 where rownum <=5;
@@ -474,3 +475,63 @@ where rownum <=5;
 
 select empno,ename, hiredate from emp order by hiredate;
 
+--6ì¥ ì‹¤ìŠµë¬¸ì œ
+--1. ìƒí’ˆ(product) í…Œì´ë¸”ì„ ìƒì„±í•˜ì‹œì˜¤.
+create table product 
+(p_code char(3) not null,
+p_name varchar2(30),
+p_cost number,
+p_group varchar2(30),
+constraint p_code_pk primary key(p_code));
+
+--2. ìƒí’ˆ í…Œì´ë¸”ì˜ êµ¬ì¡°ë¥¼ ê²€ìƒ‰í•˜ì‹œì˜¤
+desc product;
+
+--3. ìƒí’ˆ í…Œì´ë¸”ì— ë‹¤ìŒê³¼ ê°™ì€ ìƒí’ˆ ì •ë³´ë¥¼ ì‚½ì…í•˜ì‹œì˜¤.
+insert into product values('101','19ì¸ì¹˜ ëª¨ë‹ˆí„°',150000,'ëª¨ë‹ˆí„°');
+insert into product values('102','22ì¸ì¹˜ ëª¨ë‹ˆí„°',200000,'ëª¨ë‹ˆí„°');
+insert into product values('103','25ì¸ì¹˜ ëª¨ë‹ˆí„°',260000,'ëª¨ë‹ˆí„°');
+insert into product values('201','ìœ ì„  ë§ˆìš°ìŠ¤',7000,'ë§ˆìš°ìŠ¤');
+insert into product values('202','ë¬´ì„  ë§ˆìš°ìŠ¤',18000,'ë§ˆìš°ìŠ¤');
+insert into product values('301','ìœ ì„  í‚¤ë³´ë“œ',8000,'í‚¤ë³´ë“œ');
+insert into product values('302','ë¬´ì„  í‚¤ë³´ë“œ',22000,'í‚¤ë³´ë“œ');
+insert into product values('401','2ì±„ë„ ìŠ¤í”¼ì»¤',10000,'ìŠ¤í”¼ì»¤');
+insert into product values('402','5.1ì±„ë„ ìŠ¤í”¼ì»¤',120000,'ìŠ¤í”¼ì»¤');
+--4 ìƒí’ˆ í…Œì´ë¸” ëª¨ë“  ë°ì´í„° ê²€ìƒ‰
+select * from product;
+
+--5 ìƒí’ˆ í…Œì´ë¸”ì— ë¹„ê³ (bigo) ì—´ì„ ì‚½ì…í•˜ì‹œì˜¤
+alter table product
+add bigo varchar2 (10);
+
+--6 bigo ì»¬ëŸ¼ì´ í…Œì´ë¸”ì— ì‚½ì…ë˜ì—ˆëŠ”ì§€ í™•ì¸
+desc product;
+--7 ìƒí’ˆ í…Œì´ë¸”ì˜ bigo ì—´ êµ¬ì¡°ë¥¼ 20ìë¡œ ë³€ê²½
+alter table product
+modify bigo varchar2 (20);
+--8 ìƒí’ˆ í…Œì´ë¸”ì˜ ë³€ê²½ëœ bigo ì—´ êµ¬ì¡° ê²€ìƒ‰
+desc product;
+commit;
+--9 BIGO ì—´ ì‚­ì œ
+alter table product
+drop (bigo);
+--10 ì‚­ì œë˜ì—ˆëŠ”ì§€ í™•ì¸
+desc product;
+--11 ìƒí’ˆ í…Œì´ë¸”ëª…ì„ product1 ë¡œ ë³€ê²½
+rename product to product1;
+--12 ë³€ê²½ë˜ì—ˆëŠ”ì§€ í™•ì¸
+desc product1;
+--13 product1 í…Œì´ë¸” ë‚´ì˜ ëª¨ë“  ë°ì´í„° ì‚­ì œ (truncate ì‚¬ìš©)
+truncate table product1;
+--14 í™•ì¸ì„ ìœ„í•´ í…Œì´ë¸” ë‚´ìš© ê²€ìƒ‰
+select * from product1;
+--15 product1 í…Œì´ë¸” ì‚­ì œ
+drop table product1;
+--16.emp í…Œì´ë¸”ê³¼ dept í…Œì´ë¸”ì„ ì¡°íšŒí•˜ì—¬ ì‚¬ì›ì˜ ì´ë¦„ê³¼ ë¶€ì„œ ì´ë¦„ì„ ì¶œë ¥í•˜ëŠ” viewë¥¼ ìƒì„±í•˜ì‹œì˜¤.(ë·°ì´ë¦„.v_emp)
+create or replace view v_emp
+as 
+  select e.ename, d.dname 
+  from emp e,dept d
+  where e.deptno=d.deptno;
+
+select *from v_emp;
