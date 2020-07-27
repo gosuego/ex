@@ -166,3 +166,55 @@ begin
  end loop;
 end;
 /
+/*
+set verify on/off : sql 명령이나 pl/sql에서 &를 이용한 치환변수들을 사용할 때 치환되기 전 후의
+자세한 값을 보일 건지의 여부를 결정한다. 기본값은 on이다.
+*/
+
+set verify off;
+
+--예시3(select empno from emp)
+select & list
+from & tab
+where rownum<10;
+
+--예시4
+create table pl_test2
+( no number,
+ name varchar2(10),
+ addr varchar2(10)
+);
+--데이터 3개 삽입
+declare
+ v_no number := '&no';
+ v_name varchar(10) := '&name';
+ v_addr varchar(10) :='&addr';
+begin
+ insert into pl_test2
+ values(v_no,v_name,v_addr);
+end;
+/
+select *from pl_test2;
+
+begin
+ update pl_test2
+ set name='KKK'
+ where no = 1;
+end;
+/
+
+begin
+ delete from pl_test2
+ where no =3;
+end;
+/
+select *from pl_test2;
+
+--pl_test2 테이블에서 no=2 인 이름('홍길동')과 주소('왕십리')을 변경하시오.
+
+begin
+ update pl_test2
+ set name='홍길동', addr ='왕십리'
+ where no =2;
+end;
+/ 
