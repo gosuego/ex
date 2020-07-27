@@ -535,3 +535,11 @@ as
   where e.deptno=d.deptno;
 
 select *from v_emp;
+
+--17. emp 테이블과 dept 테이블을 조회하여 부서 번호와 부서별 최대 급여 및 부서명을 출력하시오.
+select e.deptno, d.dname, e.sal
+from (select deptno, MAX(sal) sal
+        from emp
+        group by deptno) e, dept d
+where e.deptno = d.deptno;
+
