@@ -1,6 +1,6 @@
---5Àå ½Ç½À¹®Á¦
+--5ì¥ ì‹¤ìŠµë¬¸ì œ
 
---ÇĞ»ç°ü¸®2
+--í•™ì‚¬ê´€ë¦¬2
 
 create table student1(
 stu_no char(9),
@@ -13,13 +13,13 @@ stu_height number(5,2),
 stu_weight number(5,2),
 constraint k_stu_no primary key(stu_no));
 
-insert into student1 values('20093075', '¿ÁÇÑºû','±â°è',1,'C','M',177,80);
-insert into student1 values('20093088', 'ÀÌÅÂ¿¬','±â°è',1,'C','F',162,50);
-insert into student1 values('20093054', 'À¯°¡ÀÎ','±â°è',2,'C','F',154,47);
-insert into student1 values('20072088', 'Á¶¹Î¿ì','Àü±âÀüÀÚ',1,'C','M',188,90);
-insert into student1 values('20062021', '½É¼öÁ¤','Àü±âÀüÀÚ',2,'A','F',168,45);
-insert into student1 values('20061062', '±èÀÎÁß','ÄÄÇ»ÅÍÁ¤º¸',1,'B','M',166,67);
-insert into student1 values('20061007', 'ÁøÇö¹«','ÄÄÇ»ÅÍÁ¤º¸',2,'C','M',174,64);
+insert into student1 values('20093075', 'ì˜¥í•œë¹›','ê¸°ê³„',1,'C','M',177,80);
+insert into student1 values('20093088', 'ì´íƒœì—°','ê¸°ê³„',1,'C','F',162,50);
+insert into student1 values('20093054', 'ìœ ê°€ì¸','ê¸°ê³„',2,'C','F',154,47);
+insert into student1 values('20072088', 'ì¡°ë¯¼ìš°','ì „ê¸°ì „ì',1,'C','M',188,90);
+insert into student1 values('20062021', 'ì‹¬ìˆ˜ì •','ì „ê¸°ì „ì',2,'A','F',168,45);
+insert into student1 values('20061062', 'ê¹€ì¸ì¤‘','ì»´í“¨í„°ì •ë³´',1,'B','M',166,67);
+insert into student1 values('20061007', 'ì§„í˜„ë¬´','ì»´í“¨í„°ì •ë³´',2,'C','M',174,64);
 
 create table subject1(
 sub_no char(3),
@@ -29,17 +29,17 @@ sub_year number(1),
 sub_dept varchar2(20),
 constraint k_sub_no primary key(sub_no));
 
-insert into subject1 values('111', 'µ¥ÀÌÅÍº£ÀÌ½º','ÀÌÀç¿µ',2,'ÄÄÇ»ÅÍÁ¤º¸');
-insert into subject1 values('110', 'ÀÚµ¿Á¦¾î','Á¤¼øÁ¤',2,'Àü±âÀüÀÚ');
-insert into subject1 values('109', 'ÀÚµ¿È­¼³°è','¹Ú¹Î¿µ',3,'±â°è');
-insert into subject1 values('101', 'ÄÄÇ»ÅÍ°³·Ğ','°­Á¾¿µ',3,'ÄÄÇ»ÅÍÁ¤º¸');
-insert into subject1 values('102', '±â°è°øÀÛ¹ı','±èÅÂ¿µ',1,'±â°è');
-insert into subject1 values('103', '±âÃÊÀüÀÚ½ÇÇè','±èÀ¯¼®',1,'Àü±âÀüÀÚ');
-insert into subject1 values('104', '½Ã½ºÅÛºĞ¼®¼³°è','°­¼®Çö',3,'ÄÄÇ»ÅÍÁ¤º¸');
-insert into subject1 values('105', '±â°è¿ä¼Ò¼³°è','±è¸í¼º',1,'±â°è');
-insert into subject1 values('106', 'ÀüÀÚÈ¸·Î½ÇÇè','ÃÖ¿µ¹Î',3,'Àü±âÀüÀÚ');
-insert into subject1 values('107', 'CADÀÀ¿ë½Ç½À','±¸ºÀ±Ô',2,'±â°è');
-insert into subject1 values('108', '¼ÒÇÁÆ®¿ş¾î°øÇĞ','±Ç¹Î¼º',1,'ÄÄÇ»ÅÍÁ¤º¸');
+insert into subject1 values('111', 'ë°ì´í„°ë² ì´ìŠ¤','ì´ì¬ì˜',2,'ì»´í“¨í„°ì •ë³´');
+insert into subject1 values('110', 'ìë™ì œì–´','ì •ìˆœì •',2,'ì „ê¸°ì „ì');
+insert into subject1 values('109', 'ìë™í™”ì„¤ê³„','ë°•ë¯¼ì˜',3,'ê¸°ê³„');
+insert into subject1 values('101', 'ì»´í“¨í„°ê°œë¡ ','ê°•ì¢…ì˜',3,'ì»´í“¨í„°ì •ë³´');
+insert into subject1 values('102', 'ê¸°ê³„ê³µì‘ë²•','ê¹€íƒœì˜',1,'ê¸°ê³„');
+insert into subject1 values('103', 'ê¸°ì´ˆì „ìì‹¤í—˜','ê¹€ìœ ì„',1,'ì „ê¸°ì „ì');
+insert into subject1 values('104', 'ì‹œìŠ¤í…œë¶„ì„ì„¤ê³„','ê°•ì„í˜„',3,'ì»´í“¨í„°ì •ë³´');
+insert into subject1 values('105', 'ê¸°ê³„ìš”ì†Œì„¤ê³„','ê¹€ëª…ì„±',1,'ê¸°ê³„');
+insert into subject1 values('106', 'ì „ìíšŒë¡œì‹¤í—˜','ìµœì˜ë¯¼',3,'ì „ê¸°ì „ì');
+insert into subject1 values('107', 'CADì‘ìš©ì‹¤ìŠµ','êµ¬ë´‰ê·œ',2,'ê¸°ê³„');
+insert into subject1 values('108', 'ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™','ê¶Œë¯¼ì„±',1,'ì»´í“¨í„°ì •ë³´');
 
 create table enrol1(
 sub_no char(3),

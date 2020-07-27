@@ -1,4 +1,4 @@
---5Àå µ¥ÀÌÅÍ °»½Å°ú Æ®·¹Á§¼Ç Á¦¾î
+--5ì¥ ë°ì´í„° ê°±ì‹ ê³¼ íŠ¸ë ˆì ì…˜ ì œì–´
 
 create table a_enrol
 as select*
@@ -27,7 +27,7 @@ where stu_no like '2015%';
 
 select * from a_enrol;
 
---¿øº» ¼öÁ¤
+--ì›ë³¸ ìˆ˜ì •
 update a_enrol
 set enr_grade = enr_grade +5;
 
@@ -38,10 +38,10 @@ where sub_no = 104;
 update a_enrol 
 set enr_grade = enr_grade +10
 where sub_no = (select sub_no from subject 
-                where sub_name = '½Ã½ºÅÛºĞ¼®¼³°è');
+                where sub_name = 'ì‹œìŠ¤í…œë¶„ì„ì„¤ê³„');
                 
                 select sub_no from subject 
-                where sub_name = '½Ã½ºÅÛºĞ¼®¼³°è';
+                where sub_name = 'ì‹œìŠ¤í…œë¶„ì„ì„¤ê³„';
                 
 delete from a_enrol
 where stu_no = 20131001;
@@ -112,7 +112,7 @@ where deptno = (select deptno from dept
 select deptno from dept where dname = 'SALES';
 commit;
 
---¿¹½Ã
+--ì˜ˆì‹œ
 
 create table t_readonly(
 no number, 
@@ -122,97 +122,97 @@ insert into t_readonly values(1,'AAA');
 select * from t_readonly;
 commit;
 
---ÀĞ±â ÀüÇüÀ¸·Î º¯°æÇÑ´Ù.
+--ì½ê¸° ì „í˜•ìœ¼ë¡œ ë³€ê²½í•œë‹¤.
 
 alter table t_readonly read only;
 alter table t_readonly read write;
 insert into t_readonly values(2,'BBB');
-delete from t_readonly;--µ¥ÀÌÅÍ »èÁ¦
-drop table t_readonly;--Å×ÀÌºí »èÁ¦
+delete from t_readonly;--ë°ì´í„° ì‚­ì œ
+drop table t_readonly;--í…Œì´ë¸” ì‚­ì œ
 
---5Àå ½Ç½À¹®Á¦
+--5ì¥ ì‹¤ìŠµë¬¸ì œ
 
---1.ÇĞ¹ø 20101059,ÀÌ¸§ Á¶º´ÁØ, ÇĞ°ú ÄÄÇ»ÅÍÁ¤º¸,ÇĞ³â 1, ¹İ B,Å° 164, ¸ö¹«°Ô 70ÀÎ ³²ÇĞ»ıÀ» Ãß°¡ÇÏ½Ã¿À
-insert into student1 values('20101059','Á¶º´ÁØ','ÄÄÇ»ÅÍÁ¤º¸',1,'B','M',164,70);
+--1.í•™ë²ˆ 20101059,ì´ë¦„ ì¡°ë³‘ì¤€, í•™ê³¼ ì»´í“¨í„°ì •ë³´,í•™ë…„ 1, ë°˜ B,í‚¤ 164, ëª¸ë¬´ê²Œ 70ì¸ ë‚¨í•™ìƒì„ ì¶”ê°€í•˜ì‹œì˜¤
+insert into student1 values('20101059','ì¡°ë³‘ì¤€','ì»´í“¨í„°ì •ë³´',1,'B','M',164,70);
 select * from student1;
---2.ÇĞ¹ø 20102038,ÀÌ¸§
+--2.í•™ë²ˆ 20102038,ì´ë¦„
 insert into student1(stu_no,stu_name,stu_dept,stu_year,stu_class,stu_gender) 
-values('20102038','³²Áö¼±','Àü±âÀüÀÚ',1,'C','F');
+values('20102038','ë‚¨ì§€ì„ ','ì „ê¸°ì „ì',1,'C','F');
 --3.
 insert into student1 (stu_no,stu_name,stu_dept,stu_year,stu_class,stu_gender) 
-values('20103009','¹Ú¼Ò½Å','±â°è',
+values('20103009','ë°•ì†Œì‹ ','ê¸°ê³„',
 (select stu_year from student1 where stu_no = '20093075'),
 (select stu_class from student1 where stu_no = '20093075'),'M');
---4.student1 Å×ÀÌºí¿¡ studentµ¥ÀÌÅÍ Áß 3ÇĞ³â Áı¾î³Ö±â.
+--4.student1 í…Œì´ë¸”ì— studentë°ì´í„° ì¤‘ 3í•™ë…„ ì§‘ì–´ë„£ê¸°.
 insert into student1 
 (select * from student where stu_grade=3);
---5.ÇĞ¹ø Ã£¾Æ¼­ ¹İ ¼öÁ¤ÇÏ±â
+--5.í•™ë²ˆ ì°¾ì•„ì„œ ë°˜ ìˆ˜ì •í•˜ê¸°
 select*from student1 where stu_no = 20072088;
 update student1 set stu_class='B' where stu_no=20072088;
---6.ÇĞ»ıÀÇ Å°°¡ ÀÚ¶õ°É update
-select *from student1 where stu_name='±èÀÎÁß';
+--6.í•™ìƒì˜ í‚¤ê°€ ìë€ê±¸ update
+select *from student1 where stu_name='ê¹€ì¸ì¤‘';
 update student1 
 set stu_height=stu_height+2 
 where stu_no=20061062;
---7. ½ÅÇĞ³âÀÌ µÇ¾î ÇĞ³âÀ» ¿Ã·ÁÁÖ¾î¶ó.
+--7. ì‹ í•™ë…„ì´ ë˜ì–´ í•™ë…„ì„ ì˜¬ë ¤ì£¼ì–´ë¼.
 select*from student1;
 update student1
 set stu_year=stu_year+1;
---8. ÇĞ°ú¿Í ÇĞ¹ø ¹Ù²Ù±â
+--8. í•™ê³¼ì™€ í•™ë²ˆ ë°”ê¾¸ê¸°
 update student1 
-set stu_dept='ÄÄÇ»ÅÍÁ¤º¸', stu_no=20061021
+set stu_dept='ì»´í“¨í„°ì •ë³´', stu_no=20061021
 where stu_no=20062021;
---9.±â°è°øÀÛ¹ı °ú¸ñÀÇ Á¡¼ö¸¦ 10Á¡ °¨ÇÏ±â
+--9.ê¸°ê³„ê³µì‘ë²• ê³¼ëª©ì˜ ì ìˆ˜ë¥¼ 10ì  ê°í•˜ê¸°
 select *from enrol1
 where SUB_NO = (select sub_no from subject1 
-where sub_name='±â°è°øÀÛ¹ı');
+where sub_name='ê¸°ê³„ê³µì‘ë²•');
 update enrol1  
 set enr_grade =enr_grade-10
 where SUB_NO = (select sub_no from subject1 
-where sub_name='±â°è°øÀÛ¹ı');
---10.±èÀÎÁß ÇĞ»ıÀÇ ¼ºÀûÀ» 0Á¡À¸·ÎÃ³¸®ÇÏ½Ã¿À
+where sub_name='ê¸°ê³„ê³µì‘ë²•');
+--10.ê¹€ì¸ì¤‘ í•™ìƒì˜ ì„±ì ì„ 0ì ìœ¼ë¡œì²˜ë¦¬í•˜ì‹œì˜¤
 select * from enrol1 
-where stu_no =(select stu_no from student1 where stu_name='±èÀÎÁß')
-and sub_no = (select sub_no from subject1 where sub_name = '¼ÒÇÁÆ®¿ş¾î°øÇĞ');
+where stu_no =(select stu_no from student1 where stu_name='ê¹€ì¸ì¤‘')
+and sub_no = (select sub_no from subject1 where sub_name = 'ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™');
 update enrol1
 set enr_grade=0
 where stu_no= 20061062 
-and sub_no = (select sub_no from subject1 where sub_name = '¼ÒÇÁÆ®¿ş¾î°øÇĞ');
+and sub_no = (select sub_no from subject1 where sub_name = 'ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™');
 commit;
--- 11. 20093088ÀÌ ÀÚÅğÇß´Ù.
+-- 11. 20093088ì´ ìí‡´í–ˆë‹¤.
 delete from student1
 where stu_no= 20093088;
---12. °ú¸ñ¹øÈ£ 112,°ú¸ñ¸í ÀÚµ¿È­½Ã½ºÅÛ, ±³¼ö¸é °íÁ¾¹Î, ÇĞ³â 3, ÇĞ°ú ±â°è¸¦ Ãß°¡ÇÏ½Ã¿À(subject1 Å×ÀÌºí¿¡ Ãß°¡)
+--12. ê³¼ëª©ë²ˆí˜¸ 112,ê³¼ëª©ëª… ìë™í™”ì‹œìŠ¤í…œ, êµìˆ˜ë©´ ê³ ì¢…ë¯¼, í•™ë…„ 3, í•™ê³¼ ê¸°ê³„ë¥¼ ì¶”ê°€í•˜ì‹œì˜¤(subject1 í…Œì´ë¸”ì— ì¶”ê°€)
 select*from subject1;
-insert into subject1 values('112','ÀÚµ¿È­½Ã½ºÅÛ','°íÁ¾¹Î',3,'±â°è');
---°ú¸ñ¹øÈ£¸¦ 110¿¡¼­ 501·Î º¯°æÇÏ½Ã¿À.
+insert into subject1 values('112','ìë™í™”ì‹œìŠ¤í…œ','ê³ ì¢…ë¯¼',3,'ê¸°ê³„');
+--ê³¼ëª©ë²ˆí˜¸ë¥¼ 110ì—ì„œ 501ë¡œ ë³€ê²½í•˜ì‹œì˜¤.
 select*from subject1;
 update subject1
 set sub_no = 501
 where sub_no = 110;
---14.°ú¸ñ¹øÈ£ 101À» Æó°­À¸·Î Ã³¸®ÇÏ½Ã¿À.
+--14.ê³¼ëª©ë²ˆí˜¸ 101ì„ íê°•ìœ¼ë¡œ ì²˜ë¦¬í•˜ì‹œì˜¤.
 delete from subject1
 where sub_no = 101;
 rollback;
---15. enrol1 Å×ÀÌºí¿¡¼­ subject1 Å×ÀÌºí¿¡ ¾ø´Â °ú¸ñ¹øÈ£¸¦ 999·Î º¯°æÇÏ½Ã¿À.
+--15. enrol1 í…Œì´ë¸”ì—ì„œ subject1 í…Œì´ë¸”ì— ì—†ëŠ” ê³¼ëª©ë²ˆí˜¸ë¥¼ 999ë¡œ ë³€ê²½í•˜ì‹œì˜¤.
 select*from enrol1;
 update enrol1
 set sub_no=999
-where sub_no not in(select sub_no from subject1); --not in Æ÷ÇÔµÇÁö ¾ÊÀº
---16. enrol1 Å×ÀÌºí¿¡¼­ °ú¸ñ¹øÈ£ 999¸¦ »èÁ¦ÇÕ´Ï´Ù.
+where sub_no not in(select sub_no from subject1); --not in í¬í•¨ë˜ì§€ ì•Šì€
+--16. enrol1 í…Œì´ë¸”ì—ì„œ ê³¼ëª©ë²ˆí˜¸ 999ë¥¼ ì‚­ì œí•©ë‹ˆë‹¤.
 select*from enrol1;
 delete from enrol1
 where sub_no=999;
---17. subject1Å×ÀÌºí¿¡¼­enrol1 Å×ÀÌºí¿¡ ¾ø´Â °ú¸ñÀ» »èÁ¦ÇÏ½Ã¿À.
+--17. subject1í…Œì´ë¸”ì—ì„œenrol1 í…Œì´ë¸”ì— ì—†ëŠ” ê³¼ëª©ì„ ì‚­ì œí•˜ì‹œì˜¤.
 delete from subject1
 where sub_no not in 
 (select distinct sub_no from enrol1);
 select *from subject1;
---18. enrol1ÀüÃ¼µ¥ÀÌÅÍ¸¦ »èÁ¦ÇÏ½Ã¿À
+--18. enrol1ì „ì²´ë°ì´í„°ë¥¼ ì‚­ì œí•˜ì‹œì˜¤
 delete from enrol1;
 rollback;
 drop table enrol1;
---Merger ¿¹½Ã
+--Merger ì˜ˆì‹œ
 create table charge_01
 (u_date varchar2(6),
 cust_no number,
