@@ -77,3 +77,400 @@ enr_grade number(3),
 constraint enr_stu_no foreign key(stu_no) references t_student(stu_no),
 constraint p_enol primary key(sub_no, stu_no)
 );
+
+--제약조건 제약조건을 확인 할때는 대문자.
+select*from user_constraints 
+where table_name = 'T_STUDENT';
+select*from user_constraints 
+where table_name = 'T_ENROL';
+
+desc t_student;
+
+select constraint_name,table_name, column_name 
+from user_cons_columns;
+--제약 조건의 삭제
+alter table t_enrol drop constraints enr_stu_no cascade; 
+select*from user_constraints  --확인
+where table_name = 'T_ENROL';
+--제약조건의 활성화, 비활성화
+select*from user_constraints 
+where table_name = 'T_STUDENT';
+alter table t_student 
+disable constraint n_stu_dept;
+alter table t_student 
+enable constraint n_stu_dept;
+
+create table emp01(
+empno number(4),
+ename varchar2(10),
+job varchar2(9),
+deptno number(2)
+);
+select*from emp01;
+
+insert into emp01
+values(null,null,'사원',30);
+
+select constraint_name, constraint_type, table_name
+from user_constraints
+where table_name = 'emp01';
+
+create table emp02(
+ empno number(4) not null,
+ ename varchar2(10) not null,
+ job varchar2(9),
+ deptno number(2)
+);
+
+insert into emp02
+values(null,null,'사원',30);
+
+select constraint_name, constraint_type, table_name
+from user_constraints
+where table_name = 'emp02';
+insert into emp02
+values(1000,'허준','사원',30);
+select * from emp02;
+insert into emp02
+values (1000,'홍길동','과장',20);
+commit;
+create table emp03(
+ empno number(4) unique, --중복이 안되고 널은 들어갈 수 있다. 그렇다면 프라이머리키는?
+ ename varchar2(10) not null,
+ job varchar2(9),
+ deptno number(2)
+);
+select * from emp03;
+
+insert into emp03
+values(1000,'허준','사원',30);
+insert into emp03
+values (1000,'홍길동','과장',20);
+insert into emp03
+values (null,'안중근','과장',20);
+
+create table emp04(
+empno number(4) constraint emp04_empno_uk unique,
+ename varchar2(10) constraint emp04_ename_nn not null,
+job varchar2(9),
+deptno number(2)
+);
+
+select constraint_name, constraint_type, table_name
+from user_constraints
+where table_name in('EMP04');
+
+insert into emp04
+values (1000,'허준','사원',30);
+
+select *from emp04;
+rollback;
+insert into emp04
+values (1000, '홍길동','과장',20);
+
+create table emp05(
+empno number(4) constraint emp05_empno_pk primary key,
+ename varchar2(10) constraint emp05_ename_nn not null,
+job varchar2(9),
+deptno number(2)
+);
+
+select constraint_name, constraint_type, table_name
+from user_constraints
+where table_name in('EMP05');
+select * from emp05;
+insert into emp05
+values (1000 ,'허준','사원',30);
+ --pk는 기본적으로 하나밖에 안됨 중복이 되면 걸려버림 (uniqe)
+insert into emp05
+values(1000, '홍길동', '과장',20); 
+--pk는 널값이 안됌.
+insert into emp05
+values(null,'이순신','부장',10);
+commit;
+
+create table emp07(
+ empno number(4)
+    constraint emp07_empno_pk primary key,
+ ename varchar2(10)
+    constraint emp07_ename_nn not null,
+ sal number(7,2)
+    constraint emp07_sal_ck check(sal between 500 and 5000),
+ gender varchar2(1)
+    constraint emp07_gender_ck check(gender in('M','F'))
+);
+
+select constraint_name, constraint_type, table_name
+from user_constraints
+where table_name in('EMP07');
+
+insert into emp07
+values (1000,'허준',600,'M');
+select*from emp07;
+
+create table dept01(
+ deptno number(2) primary key,
+ dname varchar2(14),
+ loc varchar2(13) default'서울'
+);
+select *from dept01;
+
+insert into dept01
+values (000,'고수현','울산');
+insert into dept01(deptno, dname)
+values (002,'고수현');
+drop table dept01;
+delete table dept01;
+
+create table emp08 (
+ empno number(4) primary key,
+ ename varchar2(10) not null,
+ job varchar2(9) unique,
+ deptno number(2) references dept(deptno)
+);
+select constraint_name, constraint_type, r_constraint_name, table_name
+from user_constraints
+where table_name in('EMP08');
+
+create table emp09(
+ empno number(4),
+ ename varchar2(10) not null,
+ job varchar2(9),
+ deptno number(2),
+ primary key(empno),
+ unique(job),
+ foreign key(deptno) references dept(deptno)
+);
+
+select constraint_name, constraint_type, r_constraint_name, table_name
+from user_constraints
+where table_name in('EMP09');
+
+create table emp11(
+empno number(4),
+ename varchar2(10) constraint emp11_ename_nn not null,
+job varchar2(9),
+deptno number(2),
+CONSTRAINT EMP11_EMPNO_PK primary key(EMPNO),
+constraint EMP11_JOB_UK UNIQUE(JOB),
+constraint EMP11_DEPTNO_FK foreign key(DEPTNO)
+        references dept(deptno)
+        );
+select constraint_name, constraint_type, r_constraint_name, table_name
+from user_constraints
+where table_name in('EMP11');
+
+
+--기본키가 2개의 컬럼으로 구성된 경우
+create table member01(
+ name varchar2(10),
+ address varchar2(30),
+ hphone varchar2(16),
+ constraint member01_combo_pk primary key (name,hphone)
+ );
+select constraint_name, constraint_type, r_constraint_name, table_name
+from user_constraints
+where table_name in('MEMBER01'); 
+
+select constraint_name, table_name, column_name
+from user_cons_columns
+where table_name in('MEMBER01'); 
+
+select constraint_name, constraint_type, r_constraint_name, table_name
+from user_constraints
+where table_name in('EMP01'); 
+
+select * from emp01;
+
+alter table emp01
+add constraint emp01_empno_pk 
+primary key(empno);
+
+alter table emp01
+add constraint emp01_deptno_fk
+foreign key(deptno) references dept(deptno);
+desc emp01;
+
+alter table emp01
+modify ename constraint emp01_ename_nn not null;
+
+alter table emp01
+drop primary key;
+
+-- view 뷰
+create or replace view v_student1 -- 새로 만들거나 재구성 하다. 
+as 
+select * from student where stu_dept = '컴퓨터정보';
+
+select *from v_student1;
+
+--예시
+--emp 테이블에서 deptno가 20인 데이터를 수집하여 가상의 테이블(v_emp1)를 만드시오.
+create or replace view v_emp1
+as 
+select *from emp where deptno=20;
+
+select* from v_emp1;
+--조인뷰
+create or replace view v_enrol1
+as select sub_name, a.sub_no, stu_no, enr_grade
+from enrol a, subject b
+where a.sub_no = b.sub_no;
+
+select * from v_enrol1;
+--조인뷰 예시
+create or replace view v_emp2
+as 
+select empno,ename,mgr,hiredate,sal,dept.dname
+from emp, dept
+where emp.deptno = dept.deptno;
+
+select * from v_emp2;
+--인라인뷰
+select stu_no,stu_name,a.stu_dept,stu_height
+from student a, (select stu_dept, avg(stu_height)
+                as avg_height
+                from student
+                group by stu_dept)b
+where a.stu_dept = b.stu_dept
+and a.stu_height > b.avg_height;
+--인라인뷰 예시
+--부서별 사원 중 급여를 가장 많이 받는 사원의 정보를 검색하시오.
+select a.empno,a.ename,a.sal,c.dname
+from emp a, (select deptno,max(sal) maxsal
+            from emp 
+            group by deptno)b,dept c
+where a.deptno=b.deptno and a.sal=b.maxsal and a.deptno = c.deptno
+order by a.deptno;
+--top-n 질의 
+select stu_no, stu_name, stu_height
+from (select stu_no, stu_name, stu_height
+        from student
+        where stu_height is not null
+        order by stu_height desc)
+where rownum <=5;
+--emp 테이블에서 급여를 가장 많이 받는 5명의 사원번호, 이름, 급여를 검색하시오.
+select empno,ename,sal
+from (select empno,ename,sal
+        from emp
+        where sal is not null
+        order by sal desc)
+where rownum <= 5;
+
+--학생의 이름으로 인덱스 생성
+create index i_stu_name on student(stu_name);
+--학생의 학번과 이름을 합쳐서 인덱스를 생성
+create index i_stu_no_name on student(stu_no,stu_name);
+--유일한 값으로 인덱스 생성
+create unique index i_stu_name on student(stu_name);
+--함수나 수식을 이용하여 인덱스 생성
+create index i_stu_weight on student(stu_weight-5);
+
+select*from user_indexes
+where table_name = 'STUDENT';
+
+drop index i_stu_name;
+
+--시퀸스 게시판 만들 때 써먹을 수 있음.
+create sequence seq1
+increment by 2
+start with 1000
+maxvalue 10000;
+
+select seq1.nextval from dual;
+select seq1.currval from dual;
+run;
+
+--뷰 예제
+
+select *from emp
+where deptno=30;
+create or replace view v_emp30
+as select empno, ename, sal, deptno
+from emp 
+where deptno =30;
+
+select * from v_emp30;
+
+--emp테이블에서 deptno가 10번 사원의 empno,ename,job,sal를 검색해서 (v_emp10)의 가상테이블을 만드시오.
+select * from emp where deptno=10;
+create or replace view v_emp10
+as select empno, ename,job,sal 
+from emp 
+where deptno=10;
+select * from v_emp10;
+
+drop view v_emp10;
+
+create sequence seq2
+increment by 1
+start with 1
+maxvalue 100;
+
+select seq2.nextval from dual; --자동 증가 값
+select seq2.currval from dual; --현재 나의 숫자
+
+alter sequence seq2
+increment by 2
+;
+
+drop sequence seq2;
+
+create sequence emp_seq
+start with 1
+increment by 1
+maxvalue 100000;
+
+create table emp12(
+empno number(4) primary key,
+ename varchar(10),
+hiredate date
+);
+
+select * from emp_seq;
+
+select * from emp12;
+
+select constraint_name, constraint_type, table_name
+from user_constraints
+where table_name in('EMP12');
+
+insert into emp12
+values(emp_seq.nextval,'강감찬',SYSDATE);
+insert into emp12
+values(emp_seq.nextval,'이순신',SYSDATE);
+insert into emp12
+values(emp_seq.nextval,'종대왕',SYSDATE);
+insert into emp12
+values(emp_seq.nextval,'윤봉길',SYSDATE);
+insert into emp12
+values(emp_seq.nextval,'메롱',SYSDATE);
+
+select sequence_name, min_value, max_value, increment_by
+from user_sequences;
+
+--뷰와 rownum 컬럼으로 top-n
+create or replace view view_hire
+as
+select empno,ename,hiredate 
+from emp
+order by hiredate;
+
+select rownum, empno, ename, hiredate
+from view_hire;
+
+select rownum,empno,ename,hiredate
+from view_hire
+where rownum <=10;
+
+--인라인 뷰로 top-n 구하기
+select rownum,empno,ename,hiredate
+from (select * from view_hire)
+where rownum <=5;
+
+select rownum,empno,ename,hiredate
+from (select empno,ename, hiredate from emp order by hiredate)
+where rownum <=5;
+
+select empno,ename, hiredate from emp order by hiredate;
+
