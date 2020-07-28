@@ -198,7 +198,7 @@ select *from pl_test2;
 
 begin
  update pl_test2
- set name='KKK'
+ set name='K'
  where no = 1;
 end;
 /
@@ -218,3 +218,138 @@ begin
  where no =2;
 end;
 / 
+select *from subject;
+create procedure test1
+(v_sub_name in subject.sub_name%type,
+v_sub_prof in subject.sub_prof%type,
+v_sub_grade in subject.sub_grade%type,
+v_sub_dept in subject.sub_dept%type)
+is
+v_sub_no subject.sub_no%type;
+begin
+select max(sub_no)
+ into v_sub_no
+ from subject;
+v_sub_no := to_number(v_sub_no)+1;
+insert
+ into subject
+ values(v_sub_no,v_sub_name,v_sub_prof,v_sub_grade,
+v_sub_dept);
+commit;
+end test1;
+/
+
+execute test1('컴퓨터구조','강주봉',2,'컴퓨터정보');
+select *from subject;
+
+create or replace procedure test2
+ (v_stu_no in student.stu_no%type,
+ v_stu_grade in student.stu_grade%type)
+is
+begin
+update student
+set stu_grade = v_stu_grade
+where stu_no = v_stu_no;
+end test2;
+/
+select * 
+ from student 
+ where stu_no = 20153075; 
+
+ 
+exec test2(20153075,2); 
+
+select * 
+ from student 
+ where stu_no = 20153075;
+ 
+--test3 : 학번을 입력으로 학생의 이름을 검색
+create or replace procedure test3
+(v_stu_no in student.stu_no%type,
+v_stu_name out student.stu_name%type)
+is
+begin
+select stu_name
+into v_stu_name
+from student
+where stu_no = v_stu_no;
+ end test3;
+/
+variable d_stu_name varchar2(12); 
+ exec test3(20153075,:d_stu_name);
+ 
+print d_stu_name;
+
+--test4 :학생의 점수를 임의 점수만큼 올려주는 프로시저
+create or replace procedure test4
+(v_sub_no in enrol.sub_no%type,
+ v_stu_no in enrol.stu_no%type,
+v_enr_grade in out enrol.enr_grade%type)
+ is
+begin
+ update enrol
+ set enr_grade = enr_grade + v_enr_grade
+ where stu_no = v_stu_no
+ and sub_no = v_sub_no;
+ select enr_grade
+into v_enr_grade
+from enrol
+where stu_no = v_stu_no
+ and sub_no = v_sub_no;
+ end test4;
+/
+select * from enrol where stu_no = 20131001 and sub_no=101;
+
+variable d_enr_grade number
+begin
+  :d_enr_grade:=10;
+end;
+/
+print d_enr_grade;
+--test 5: 과목 추가, 과목번호는 과목이 입력되는 순서대로 부여
+
+create sequence seq1
+increment by 1
+start with 201
+maxvalue 999;
+
+create procedure test5
+(v_sub_name in subject.sub_name%type,
+ v_sub_prof in subject.sub_prof%type,
+ v_sub_grade in subject.sub_grade%type,
+ v_sub_dept in subject.sub_dept%type)
+is
+begin
+insert
+into subject
+values(seq1.nextval, v_sub_name,v_sub_prof, v_sub_grade, v_sub_dept);
+commit;
+end test5;
+/
+
+select *from subject order by 1;
+exec test5('앱','홍길동',3,'컴퓨터정보');
+select *from subject order by 1;
+
+--test6
+create or replace function test6
+ (v_enr_grade in number)
+ return char
+is
+ enr_score char;
+begin
+ if v_enr_grade >= 90 then enr_score := 'A';
+ elsif v_enr_grade >= 80 then enr_score :='B';
+ elsif v_enr_grade >= 70 then enr_score := 'C';
+ elsif v_enr_grade >= 60 then enr_score := 'D';
+ end if;
+ return (enr_score);
+end test6;
+/
+variable d_score char;
+execute :d_score := test6(95);
+print d_score;
+
+select enr_grade, test6(enr_grade) as score
+  from enrol 
+  where stu_no = 20131001;
