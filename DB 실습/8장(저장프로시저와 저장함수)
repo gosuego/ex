@@ -205,3 +205,80 @@ execute test9(7369,:var_ename,:var_sal,:var_job);
 print var_ename;
 print var_sal;
 print var_job;
+
+--예시
+select*from pl_test2;
+
+create table pl_test3
+as 
+select*from pl_test2;
+
+select *from pl_test3;
+
+create or replace procedure del_all
+is 
+begin
+    delete from pl_test3;
+    commit;
+end;
+/
+
+execute del_all;
+
+--예시
+create table pl_test4
+as 
+select*from pl_test2;
+
+select * from pl_test4;
+
+create or replace procedure del_name(v_name pl_test4.name%type)
+is 
+begin
+    delete from pl_test4
+    where name like v_name;
+    commit;
+end;
+/
+execute del_name('A%');   --A로 시작하는거 다 없애라.
+
+--수강테이블을 추가하는 프로시저를 만들어라
+create or replace procedure p_insert_enrol
+(v_sub_no in enrol.sub_no%type,
+ v_stu_no in enrol.stu_no%type,
+ v_enr_grade in enrol.enr_grade%type)
+ is 
+ v_sub_no1 enrol.sub_no%type;
+ v_stu_no1 enrol.stu_no%type;
+ begin
+  select sub_no
+  into v_sub_no1
+  from subject
+  where sub_no = v_sub_no;
+  
+  select stu_no
+  into v_stu_no1
+  from student
+  where stu_no = v_stu_no;
+  
+  insert into enrol(sub_no,stu_no,enr_grade)
+  values(v_sub_no,v_stu_no,v_enr_grade);
+  commit;
+  
+  dbms_output.put_line('학번 ' ||v_stu_no||'으로 '||v_sub_no||'번 과목이'||v_enr_grade||'점으로 추가되었습니다.');
+  
+  exception
+    when no_data_found then
+     dbms_output.put_line('무결성에 위배됩니다.');
+    when dup_val_on_index then
+     dbms_output.put_line('데이터가 존재합니다.');
+    when others then
+     dbms_output.put_line('에러입니다.');
+     rollback;
+    end p_insert_enrol;
+    /
+    
+    select * from enrol;
+    select * from student;
+execute p_insert_enrol('111',20153088,70);
+execute p_insert_enrol('108',20153075,65);
