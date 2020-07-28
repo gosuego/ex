@@ -282,3 +282,10 @@ create or replace procedure p_insert_enrol
     select * from student;
 execute p_insert_enrol('111',20153088,70);
 execute p_insert_enrol('108',20153075,65);
+--자바와 DB연결
+
+Create Table EVENT(
+Uname Varchar2(30),
+Email Varchar2(50)
+);
+select *from event;
