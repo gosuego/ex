@@ -26,3 +26,4 @@ insert into books (book_id,title,publisher,year,price)
 values(book_no_seq.nextval,'Head First SQL','Oreilly','2007',43000);
 
 select * from books;
+commit;
