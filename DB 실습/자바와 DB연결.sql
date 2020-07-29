@@ -27,3 +27,21 @@ values(book_no_seq.nextval,'Head First SQL','Oreilly','2007',43000);
 
 select * from books;
 commit;
+
+select * from student;
+
+create table scores(
+name varchar2(10),
+score varchar2(10)
+);
+
+create table product(
+prcode number(11,0) not null primary key,
+prname varchar2(45) not null,
+price number(11,0) not null,
+manufacture varchar2(20) not null
+);
+
+create sequence prcode_seq increment by 1 start with 1;
+
+commit;
