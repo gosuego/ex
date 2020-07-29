@@ -1,3 +1,5 @@
+set serveroutput on;
+
 --8장 저장 프로시저와 저장함수
 
 select *from subject;
@@ -110,11 +112,11 @@ end test5;
 /
 
 select *from subject order by 1;
-exec test5('앱','홍길동',3,'컴퓨터정보');
+exec test5('자바프로그래밍','김철수',2,'컴퓨터정보');
 select *from subject order by 1;
-
---test6
-create or replace function test6
+commit;
+--test6 등급 매기기
+create or replace function test6 --함수는 돌려주는 값이 있어야한다.
  (v_enr_grade in number)
  return char
 is
