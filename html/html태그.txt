@@ -29,3 +29,5 @@
 <img> 이미지 태그
 
 html은 태그를 많이 아는 것이 중요함
+수많은 태그들
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element
