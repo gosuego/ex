@@ -41,6 +41,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element
 
 하이퍼링크 태그
 <a>
+	속성
 	href -링크의 목적지를 나타내는 속성
 	target -링크 주소
 
@@ -50,10 +51,14 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element
 	<caption></caption -테이블 명
 	<tr></tr> - 테이블 행
 	<th></th> -테이블 내부 제목
-	<td></td> -테이블 열 (속성 colspan 가로 행 병합/rowspan 세로 열 병합)
+	<td></td> -테이블 열 
+		속성 
+		colspan -가로 행 병합
+		rowspan -세로 열 병합
 
 	<thead></thead> -행제목
 	<tbody></tbody> -행내용
 	<tfoot></tfoot> -행꼬리(총합)
 	
-	
+프레임 태그
+<iframe></iframe>
