@@ -40,3 +40,13 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element
 <a>
 	href
 	target
+
+테이블 태그
+<table></table>
+		<table border=~>테두리
+	<caption></caption
+	<tr></tr>
+	<th></th>
+	<td></td>
+	
+	
