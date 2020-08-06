@@ -50,7 +50,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element
 	<caption></caption -테이블 명
 	<tr></tr> - 테이블 행
 	<th></th> -테이블 내부 제목
-	<td></td> -테이블 열
+	<td></td> -테이블 열 (속성 colspan 가로 행 병합/rowspan 세로 열 병합)
 
 	<thead></thead> -행제목
 	<tbody></tbody> -행내용
