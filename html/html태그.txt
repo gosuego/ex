@@ -62,3 +62,18 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element
 	
 프레임 태그
 <iframe></iframe>
+	<form>	입력양식 태그
+	 	속성
+		action
+		enctype
+		method
+		target
+	<input>
+		속성
+		type
+		name
+		value
+		size
+		multiple
+	<select>
+	<textarea>
