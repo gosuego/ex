@@ -62,7 +62,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element
 	
 프레임 태그
 <iframe></iframe>
-	<form>	입력양식 태그
+	<form></form> 입력양식 태그
 	 	속성
 		action
 		enctype
@@ -75,5 +75,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element
 		value
 		size
 		multiple
-	<select>
+	<select></select>
 	<textarea>
+		속성
+		rows
