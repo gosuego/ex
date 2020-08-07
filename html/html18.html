@@ -2,27 +2,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>text와 password 태그</title>
+<title>택스트 입력 폼</title>
 </head>
 <body>
-	<form action="ex01_01.html" method="get">
-		<table border="0">
-			<tr>
-				<td>아이디</td>
-				<td><input type="text" name ="pwd" size="20"></td>
-			</tr>
-			<tr>
-				<td>비밀번호</td>
-				<td><input type="password" name="pwd" size="20"></td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center">
-					<input type="button" value="목록">
-					<input type="submit" value="전송">
-					<input type="reset" value="취소">
-				</td>
-			</tr>
-		</table>
-
+	<h3>자기 소개서 작성</h3>
+	<hr>
+		<form>
+			이름 : <input type="text" value=""><br>
+			암호 : <input type="password" value="" maxlength="4"><br>
+			자소서 : <textarea cols="20" rows="5">이곳에 자기소개서 작성</textarea>
+		</form>
+		
 </body>
 </html>
