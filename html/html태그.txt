@@ -62,20 +62,26 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element
 	
 프레임 태그
 <iframe></iframe>
-	<form></form> 입력양식 태그
-	 	속성
-		action
-		enctype
-		method
-		target
+입력양식 태그
+<form></form> 
+	 속성
+	action -
+	enctype -
+	method -
+	target -
+	name -
+	
 	<input>
 		속성
-		type
-		name
-		value
-		size
-		multiple
+		type -업로드
+		*name - 변수명
+		value -
+		size -
+		multiple -
+		hidden -
+	
 	<select></select>
 	<textarea>
 		속성
 		rows
+
