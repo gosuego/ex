@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>반응형 레이아웃</title>
+<mata name="viewport" content="width=device-width, initial-scale=1">
+<style>
+	#container {
+		width: 960px;
+		margin: 0px auto;
+		padding: 20px;
+		border: 1px solid #5D5D5D;
+	}
+	#header {
+		padding: 20px;
+		margin-bottom: 20px;
+		border: 1px solid #5D5D5D;
+	}
+	#content {
+		width: 600px;
+		padding: 20px;
+		margin-bottom: 20px;
+		float: left;
+		border: 1px solid #5D5D5D;
+	}
+	#sidebar {
+		width: 260px;
+		padding: 20px;
+		margin-bottom: 20px;
+		float: right;
+		border: 1px solid #5D5D5D;
+	}
+	#footer {
+		clear: both;
+		padding: 20px;
+		border: 1px solid #5D5D5D;
+	}
+	@media ( max-width: 550px ) {
+		#container {
+			width: auto;
+		}
+		#content {
+			width: auto;
+			float: none;
+		}
+		#sidebar {
+			width: auto;
+			float: none;
+		}
+	}
+</style>
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<h1>동화&nbsp; 속 이야기</h1>
+		</div>
+		<div id="content">
+			<h2>내용</h2>
+			<p> 거울 나라의   나라의 앨리스 거울 나라의 앨리스 거울 나라의 앨리스 거울 나라의  
+			나라의 앨리스 거울 나라의 앨리스 거울 나라의 앨리스 거울 나라의  
+			
+			
+			</p>
+			<p> 산 타는 앨리스 산 타는 앨리스 산 타는 앨리스 산 타는 앨리스
+			산 타는 앨리스 산 타는 앨리스 산 타는 앨리스 산 타는 앨리스 산 타는 앨리스
+			산 타는 앨리스
+			</p>
+		</div>
+		<div id="sidebar">
+			<h2>도서 선택</h2>
+			<ol>
+				<li><a href="">앨리스 인 원더랜드</a></li>
+				<li><a href="">톰 소여의 모험</a></li>
+				<li><a href="">잭과 콩나무</a></li>
+				<li><a href="">미저리</a></li>
+			</ol>
+			</div>
+		<div id="footer">
+			<p>Copyright<a href="">www.namgaranbooks.co.kr</a></p>
+		</div>
+	</div>
+</body>
+</html>
