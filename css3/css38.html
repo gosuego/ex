@@ -4,20 +4,17 @@
 <meta charset="UTF-8">
 <title>transition</title>
 <style>
-@keyframes imagerotation {
-	0% { transform : rotate(0deg);} 
-	100% { transform : rotate(360deg);}
-}
-#tran {
-	animation-name : imagerotation;
-	animation-duration : 1s;
-	animation-iteration-count : infinite;
-}
 
+#tran {
+	transition : width 2s;
+}
+#tran:hover {
+	width : 100%;
+}
 </style>
 </head>
 <body>
-	<h3>어지러워요</h3>
+	<h3>마우스를 올려봐요</h3>
 	<hr>
 	<img id="tran" src="image/spongebob.png" width="100" height="100"
 		alt="animation">
