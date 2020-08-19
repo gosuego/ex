@@ -1,0 +1,22 @@
+<address></address>
+
+inline 
+한줄에 올 수 있다.
+span link img
+
+block
+옆에 아무것도 올 수 없다. 
+
+<span>block</span>
+margin
+space
+자동으로 생긴 공간
+body{
+margin:0;
+}
+
+div{
+maigin-left:50px;
+}
+
+padding
