@@ -1,0 +1,37 @@
+h1 태그는 화면 전체를 쓴다. a 태그는 자신의 크기만큼의 부피를 가진다.
+화면 전체를 쓰는 것을 block이라고 한다.
+
+block level element 
+block 화면 전체를 쓰는 태그
+
+inline element
+inline 자신의 크기만큼의 부피를 가지고 다른 태그와 자리를 공유하는 태그
+inline은 높이와 너비가 없다. 
+
+상관없이 내가 전체를 쓸지 공유할지 설정하고 싶다.
+display: inline/block
+tip
+display: none; 디스플래이에서 태그들을 안 보이게 하고 싶을 때
+
+중복=지독히도 싫어한다. 개발자들은 왜 다 중복을 싫어할까? 그렇게 생각하면 내가 오늘 만든 왭페이지는 정말 sucks
+
+padding: 20px;
+컨텐트와 테두리 사이에 간격
+
+margin; 20px;
+테두리와 테두리 사이의 간격
+
+element설정 가능
+width
+height
+
+class 
+class ~ 뭐뭐 해서 사용가능
+.to= class to
+
+id는 고유값
+#to= id to 
+
+한꺼번에 여러군데 수정하고 싶다면 
+command D (mac)
+ctrl D (window)
