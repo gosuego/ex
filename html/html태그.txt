@@ -1,0 +1,87 @@
+태그
+<h> 제목 태그
+<br> 줄 바꾸기 태그
+<pre> 입력한 모양대로 출력하는 태그
+	<b> 굵게 표시된 텍스트를 정의 합니다. 
+	<del> 삭제된 텍스트를 정의합니다.
+	<em> 강조 텍스트를 정의합니다.
+	<i> 기울임 꼴 텍스트를 정의합니다.
+	<ins> 새로 추가된 내용을 정의합니다. 기본값은 밑줄입니다.
+	<mark> 강조 표시된 텍스트를 정의합니다.
+	<small> 작은 텍스트를 정의합니다.
+	<strong> 중요하거나 긴급을 요하는 내용을 표시하는 강력한 텍스트를 정의합니다.
+	<sub> 아래 첨자 텍스트를 정의합니다.
+	<sup> 위 첨자 텍스트를 정의합니다.
+
+<&nbsp> 한 칸 옆으로
+	<&it;> less than
+	<&gt;>  geater than
+	<&amp;> ampersand
+	<&quot;> quotation mark
+	<&copy;> copyright
+	<&reg;> registered tradmark
+	<&;>
+	
+<p></p> 단락태그
+<div> </div>블록형식의 공간분할 태그
+<span=~> 인라인 셩식의 공간 분할 태그
+<hr> 선 그리기 태그
+<img=~> 이미지 태그
+	<figure></figure>
+	
+html은 태그를 많이 아는 것이 중요함
+수많은 태그들
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+
+정의 목록 태그
+<dl></dl> 
+	<dd> -들여쓰기
+	<dt> -용어정리
+<u>
+
+하이퍼링크 태그
+<a>
+	속성
+	href -링크의 목적지를 나타내는 속성
+	target -링크 주소
+
+테이블 태그
+<table></table>
+		<table border=~>테두리
+	<caption></caption -테이블 명
+	<tr></tr> - 테이블 행
+	<th></th> -테이블 내부 제목
+	<td></td> -테이블 열 
+		속성 
+		colspan -가로 행 병합
+		rowspan -세로 열 병합
+
+	<thead></thead> -행제목
+	<tbody></tbody> -행내용
+	<tfoot></tfoot> -행꼬리(총합)
+	
+프레임 태그
+<iframe></iframe>
+입력양식 태그
+<form></form> 
+	 속성
+	action -
+	enctype -
+	method -
+	target -
+	name -
+	
+	<input>
+		속성
+		type -업로드
+		*name - 변수명
+		value -
+		size -
+		multiple -
+		hidden -
+	
+	<select></select>
+	<textarea>
+		속성
+		rows
+

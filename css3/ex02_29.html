@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Overflow 속성</title>
+<style>
+	#visible, #hidden, #scroll, #auto
+	{
+		width:400px;
+		height:150px;
+		background-color:#FAF4C0;
+		border: 1px solid black;
+		margin-bottom: 100px;
+	}
+	#visible{ overflow: visible; }	
+	#hidden { overflow: hidden; }
+	#scroll { overflow: scroll;}
+	#auto {overflow: auto; }
+</style>
+</head>
+<body>
+	<div id="visible">
+		<h2>1.overflow: visible</h2>
+		When Alice follows the White Rabbite ...
+		[경주] [오후 1:25] 후후
+		[지연언니] [오후 1:25] https://www.youtube.com/watch?v=BE3otESC9mM
+		[경주] [오후 1:25] 한번더 잘봐볼게!!
+		[고수현] [오후 1:25] 1시간ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+		[고수현] [오후 1:25] 저걸 1시간 듣는다고 ㅋㅋㅋㅋ
+		[고수현] [오후 1:25] ㅋㅋㅋㅋㅋㅋ
+		[고수현] [오후 1:25] 개웃겨
+		[고수현] [오후 1:26] ㅋㅋㅋㅋ 문전박대 당하네
+		[지연언니] [오후 1:26] ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+		[경주] [오후 1:26] 헉고쳤다 세미콜론 안붙혔다
+
+
+
+	</div>
+	
+	<div id="hidden">
+		<h2>2.overflow: hidden</h2>
+		When Alice follows the White Rabbite ...
+		[지연언니] [오후 1:25] https://www.youtube.com/watch?v=BE3otESC9mM
+		[경주] [오후 1:25] 한번더 잘봐볼게!!
+		[고수현] [오후 1:25] 1시간ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+		[고수현] [오후 1:25] 저걸 1시간 듣는다고 ㅋㅋㅋㅋ
+		[고수현] [오후 1:25] ㅋㅋㅋㅋㅋㅋ
+		[고수현] [오후 1:25] 개웃겨
+		[고수현] [오후 1:26] ㅋㅋㅋㅋ 문전박대 당하네
+		[지연언니] [오후 1:26] ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+		[경주] [오후 1:26] 헉고쳤다 세미콜론 안붙혔다
+	
+	</div>
+	
+	<div id="scroll">
+		<h2>3.overflow: scroll</h2>
+		When Alice follows the White Rabbite ...
+		[지연언니] [오후 1:25] https://www.youtube.com/watch?v=BE3otESC9mM
+		[경주] [오후 1:25] 한번더 잘봐볼게!!
+		[고수현] [오후 1:25] 1시간ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+		[고수현] [오후 1:25] 저걸 1시간 듣는다고 ㅋㅋㅋㅋ
+		[고수현] [오후 1:25] ㅋㅋㅋㅋㅋㅋ
+		[고수현] [오후 1:25] 개웃겨
+		[고수현] [오후 1:26] ㅋㅋㅋㅋ 문전박대 당하네
+		[지연언니] [오후 1:26] ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+		[경주] [오후 1:26] 헉고쳤다 세미콜론 안붙혔다
+	</div>
+	
+	<div id="auto">
+		<h2>4.overflow: auto</h2>
+		When Alice follows the White Rabbite ...
+		[지연언니] [오후 1:25] https://www.youtube.com/watch?v=BE3otESC9mM
+		[경주] [오후 1:25] 한번더 잘봐볼게!!
+		[고수현] [오후 1:25] 1시간ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+		[고수현] [오후 1:25] 저걸 1시간 듣는다고 ㅋㅋㅋㅋ
+		[고수현] [오후 1:25] ㅋㅋㅋㅋㅋㅋ
+		[고수현] [오후 1:25] 개웃겨
+		[고수현] [오후 1:26] ㅋㅋㅋㅋ 문전박대 당하네
+		[지연언니] [오후 1:26] ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+		[경주] [오후 1:26] 헉고쳤다 세미콜론 안붙혔다
+
+	</div>
+	
+</body>
+</html>

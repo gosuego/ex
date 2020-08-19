@@ -1,0 +1,293 @@
+set serveroutput on;
+
+--8장 저장 프로시저와 저장함수
+
+select *from subject;
+create procedure test1
+(v_sub_name in subject.sub_name%type,
+v_sub_prof in subject.sub_prof%type,
+v_sub_grade in subject.sub_grade%type,
+v_sub_dept in subject.sub_dept%type)
+is
+v_sub_no subject.sub_no%type;
+begin
+select max(sub_no)
+ into v_sub_no
+ from subject;
+v_sub_no := to_number(v_sub_no)+1;
+insert
+ into subject
+ values(v_sub_no,v_sub_name,v_sub_prof,v_sub_grade,
+v_sub_dept);
+commit;
+end test1;
+/
+
+execute test1('컴퓨터구조','강주봉',2,'컴퓨터정보');
+select *from subject;
+
+create or replace procedure test2
+ (v_stu_no in student.stu_no%type,
+ v_stu_grade in student.stu_grade%type)
+is
+begin
+update student
+set stu_grade = v_stu_grade
+where stu_no = v_stu_no;
+end test2;
+/
+select * 
+ from student 
+ where stu_no = 20153075; 
+
+ 
+exec test2(20153075,2); 
+
+select * 
+ from student 
+ where stu_no = 20153075;
+ 
+--test3 : 학번을 입력으로 학생의 이름을 검색
+create or replace procedure test3
+(v_stu_no in student.stu_no%type,
+v_stu_name out student.stu_name%type)
+is
+begin
+select stu_name
+into v_stu_name
+from student
+where stu_no = v_stu_no;
+ end test3;
+/
+variable d_stu_name varchar2(12); 
+ exec test3(20153075,:d_stu_name);
+ 
+print d_stu_name;
+
+--test4 :학생의 점수를 임의 점수만큼 올려주는 프로시저
+create or replace procedure test4
+(v_sub_no in enrol.sub_no%type,
+ v_stu_no in enrol.stu_no%type,
+v_enr_grade in out enrol.enr_grade%type)
+ is
+begin
+ update enrol
+ set enr_grade = enr_grade + v_enr_grade
+ where stu_no = v_stu_no
+ and sub_no = v_sub_no;
+ select enr_grade
+into v_enr_grade
+from enrol
+where stu_no = v_stu_no
+ and sub_no = v_sub_no;
+ end test4;
+/
+select * from enrol where stu_no = 20131001 and sub_no=101;
+
+variable d_enr_grade number
+begin
+  :d_enr_grade:=10;
+end;
+/
+print d_enr_grade;
+--test 5: 과목 추가, 과목번호는 과목이 입력되는 순서대로 부여
+
+create sequence seq1
+increment by 1
+start with 201
+maxvalue 999;
+
+create procedure test5
+(v_sub_name in subject.sub_name%type,
+ v_sub_prof in subject.sub_prof%type,
+ v_sub_grade in subject.sub_grade%type,
+ v_sub_dept in subject.sub_dept%type)
+is
+begin
+insert
+into subject
+values(seq1.nextval, v_sub_name,v_sub_prof, v_sub_grade, v_sub_dept);
+commit;
+end test5;
+/
+
+select *from subject order by 1;
+exec test5('자바프로그래밍','김철수',2,'컴퓨터정보');
+select *from subject order by 1;
+commit;
+--test6 등급 매기기
+create or replace function test6 --함수는 돌려주는 값이 있어야한다.
+ (v_enr_grade in number)
+ return char
+is
+ enr_score char;
+begin
+ if v_enr_grade >= 90 then enr_score := 'A';
+ elsif v_enr_grade >= 80 then enr_score :='B';
+ elsif v_enr_grade >= 70 then enr_score := 'C';
+ elsif v_enr_grade >= 60 then enr_score := 'D';
+ end if;
+ return (enr_score);
+end test6;
+/
+variable d_score char;
+execute :d_score := test6(95);
+print d_score;
+
+select enr_grade, test6(enr_grade) as score
+  from enrol 
+  where stu_no = 20131001;
+
+
+--test 7 학번에 의한 학생 이름 검색 학번과 성적 검색
+create or replace procedure test7
+ (v_stu_no in student.stu_no%type)
+is 
+ v_stu_name student.stu_name%type;
+begin 
+ select stu_name
+   into v_stu_name
+   from student
+   where stu_no = v_stu_no;
+  dbms_output.put_line(v_stu_name);
+ exception
+  when no_data_found then
+   dbms_output.put_line('해당 데이터가 없습니다.');
+end test7;
+/
+execute test7(20153088);
+execute test7(20153087);
+
+-- test8 과목 수간자 수 검색
+create or replace procedure test8
+ (v_sub_no in enrol.sub_no%type)
+ is 
+  v_cnt number;
+  cnt_error exception;
+ begin
+  select count(stu_no) into v_cnt from enrol
+                      where sub_no = v_sub_no;
+ dbms_output.put_line(v_sub_no||'과목 수강자는'||v_cnt||'명입니다.');
+ if v_cnt = 0 then
+  raise cnt_error;
+ end if;
+ exception
+  when cnt_error then
+   dbms_output.put_line('수강자가 없습니다.');
+ end test8;
+/
+
+execute test8(106);
+execute test8(200);
+
+select * from enrol;
+
+--test9 
+create or replace procedure test9
+(v_empno in emp.empno%type,
+v_ename out emp.ename%type,
+v_sal out emp.sal%type,
+v_job out emp.job%type
+)
+is
+begin
+ select ename,sal,job
+ into v_ename,v_sal,v_job
+ from emp
+ where empno = v_empno;
+end test9;
+/
+
+variable var_ename varchar2(15);
+variable var_sal number;
+variable var_job varchar2(9);
+
+execute test9(7369,:var_ename,:var_sal,:var_job);
+
+print var_ename;
+print var_sal;
+print var_job;
+
+--예시
+select*from pl_test2;
+
+create table pl_test3
+as 
+select*from pl_test2;
+
+select *from pl_test3;
+
+create or replace procedure del_all
+is 
+begin
+    delete from pl_test3;
+    commit;
+end;
+/
+
+execute del_all;
+
+--예시
+create table pl_test4
+as 
+select*from pl_test2;
+
+select * from pl_test4;
+
+create or replace procedure del_name(v_name pl_test4.name%type)
+is 
+begin
+    delete from pl_test4
+    where name like v_name;
+    commit;
+end;
+/
+execute del_name('A%');   --A로 시작하는거 다 없애라.
+
+--수강테이블을 추가하는 프로시저를 만들어라
+create or replace procedure p_insert_enrol
+(v_sub_no in enrol.sub_no%type,
+ v_stu_no in enrol.stu_no%type,
+ v_enr_grade in enrol.enr_grade%type)
+ is 
+ v_sub_no1 enrol.sub_no%type;
+ v_stu_no1 enrol.stu_no%type;
+ begin
+  select sub_no
+  into v_sub_no1
+  from subject
+  where sub_no = v_sub_no;
+  
+  select stu_no
+  into v_stu_no1
+  from student
+  where stu_no = v_stu_no;
+  
+  insert into enrol(sub_no,stu_no,enr_grade)
+  values(v_sub_no,v_stu_no,v_enr_grade);
+  commit;
+  
+  dbms_output.put_line('학번 ' ||v_stu_no||'으로 '||v_sub_no||'번 과목이'||v_enr_grade||'점으로 추가되었습니다.');
+  
+  exception
+    when no_data_found then
+     dbms_output.put_line('무결성에 위배됩니다.');
+    when dup_val_on_index then
+     dbms_output.put_line('데이터가 존재합니다.');
+    when others then
+     dbms_output.put_line('에러입니다.');
+     rollback;
+    end p_insert_enrol;
+    /
+    
+    select * from enrol;
+    select * from student;
+execute p_insert_enrol('111',20153088,70);
+execute p_insert_enrol('108',20153075,65);
+--자바와 DB연결
+
+Create Table EVENT(
+Uname Varchar2(30),
+Email Varchar2(50)
+);
+select *from event;

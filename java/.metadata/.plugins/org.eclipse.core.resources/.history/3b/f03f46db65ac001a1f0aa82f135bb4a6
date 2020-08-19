@@ -1,0 +1,17 @@
+import java.util.Scanner;
+public class Triangle {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("정수 3개를 입력하시오>>");
+		int 11 = scanner.nextInt();
+		int 12 = scanner.nextInt();
+		int 13 = scanner.nextInt();
+		if ((11+12)<13 || (11+13)<12 || (12+13)<11)
+			System.out.println("삼각형을 만들 수 없습니다.");
+		else
+			System.out.println("삼각형이 됩니다");
+		scanner.close();
+	}
+
+}

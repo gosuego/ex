@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>폼양식 (4)</title>
+</head>
+<body>
+	<form id="payment">
+		<fieldset>
+			<legend>카드 정보 입력</legend>
+			<ol>
+				<li>
+			<fieldset>
+				<legend>카드 타입</legend>
+				<ol>
+					<li>
+					<input id="visa" name="cardtype" type="radio">
+					<label for="visa">VISA</label>
+				</li>
+				<li>
+					
+					<input id="amex" name="cardtype" type="radio">
+					<label for="amex">AmEx</label>
+				</li>
+				<li>
+					
+					<input id="MC" name="cardtype" type="radio">
+					<label for="MC">Mastercard</label>
+				</li>
+				</fieldset>
+				<li>
+					<label for="cardnumber">카드 번호</label>
+					<input id="cardnumber" name="cardnumber" type="number"required>
+					
+					
+				</li>
+				<li>
+					<label for="secure">CRC 번호</label>
+					<input id="secure" name="secure" type="number" required>
+					
+				</li>
+				<li>
+					<label for="namecard">카드 소유자 이름</label>
+					<input id="namecard" name="namecard" type="text"
+					placeholder="카드 상의 이름" required>
+				</li>
+			</ol>
+		</fieldset>
+		<fieldset>
+			<button type="submit">구매</button>
+		</fieldset>
+		
+	</form>
+	
+</body>
+</html>

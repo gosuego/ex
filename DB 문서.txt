@@ -1,0 +1,264 @@
+Data Base// 아주 중요 취업 굳 깊게 공부하면 먹고 살만함
+
+제 1장
+
+데이터베이스 관리 시스템//데이타 창고
+DBMS
+컴퓨터에 저장되는 데이터 베이스를 관리해주는 소프트웨어 시스템
+DBMS 종류
+외국 -오라클 에스큐엘 서버 등등
+국산 - 큐브리드,티베로
+공개S/W
+마이에스큐엘,
+
+데이터 모델=논리적 데이터베이스 설계
+물리적 혹은 추상적으로 존재하는 현실 세계를 단순화되고 정형화된 상태로 표현하는 하나의 방식또는 규범
+데이터 모델링의 세가지 개념 
+-엔티티
+-관계
+-속성
+
+테이블의 특성
+중복된 레코드가 존재하지 않음
+레토드의 순서는 의미가 없음
+모든 필드는 원자값을 가짐
+
+데이터 모델
+테이블을 릴레이션 한다. 
+>관계형 데이터 모델
+
+테이블 
+속성 -필드, 컬럼, 열.
+튜블 -레코드, 행
+
+기수 테이블 인스턴스 레코드의 수 8개
+
+키 - 레코드를 구분하기 위해서 만든다.
+유일하게 식별해낼 수 있는 식별자.
+기본키 외래키 대체키
+
+DB를 잘짜야 한다. 안그러면 개고생
+PK (주식별자)
+FK(공통)(외래식별자)
+주식별자 외래식별자 보조식별자 
+구분을 알수 있다.
+
+프로젝트 짤 때 모여서 테이블을 짜야한다.
+
+객체관계도
+
+데이터베이스 용어/ 모델링 용어
+테이블                 엔티티
+컬럼,열                 속성
+튜블,행                 인스턴스
+기본키                  주식별자
+외래키                  외래식별자
+
+엔티티는 '속성들의 집합'으로 정의될 수 있다.
+ex)고객,사원정보,부서,제품/주문서,성적표,입고전표,금전출납부/생산계획,공정
+
+이알티를 테이블로 만들기
+그래서 오라클을 배운다
+
+속성
+엔티티에서 관리하고자 하는 더 이상 분리되지 않는 최소 단위의 데이터
+엔티티는 한 개 혹은 한 개 이상의 속성을 가진다
+엔티티는 '속성들의 집합;으로 정의될 수 있다.
+
+속성의 분류
+-기본 속성 : 업무분석을 통해 얻어낸 속성
+-설계속성
+-유도속성
+ 
+기본 테이블
+회원관리/ 계시판/ 큐엔에이
+
+그전에 그림 설계도부터 그려야한다.
+문서화가 다 되어 있어야 한다. 
+
+속성 명명 수칙이 있다.
+의미가 분명히 드러나게 이름을 부여한다.
+업무에서 사용하는 이름 부여
+
+관계
+두 엔티티는 상호공유하는 속성이 있다는 의미이다. 
+(연결고리 만들기)   //관계가 있는 두 엔티티에서 공유하는 속성의 이름이 반드시 같을 필요는 없다.
+
+단일 : |
+다중 : <
+
+참여도
+필수 : |
+선택 : O
+
+현실세계->개념적모델->데이터베이스
+
+
+not null= 비어있으면 안됌. 프로그램을 짜도 에러가 뜬다.
+
+varchar2 =가변길이 문자 10자리까지 들어옴
+number =숫자
+date = 날짜
+
+
+제 2장
+
+
+/실행 명령어
+
+conn 유저 바꾸기
+
+제 3장
+테이블 구조
+describe /desc 테이블 구조를 알기 위한 명령어
+
+중복행 제거 
+distinct
+'select distinct stu_dept from student;'
+
+조건 where 
+where and 조건 두개
+between ~and 
+where 필드명 like %전체_한글자
+
+null/is nor null
+in
+
+정렬 order by
+Asc  오름차순 -갈수록 커지는 수의 나열(디폴트 값)
+Desc 내림차순 -갈수록 작은수의 나열
+order by 숫자는 숫자번째를 기준
+order by 별칭을 써서 정렬가능
+ 
+ 함수
+
+숫자함수
+ROUND
+TRUNC
+MOD
+ABS
+FLOOR
+
+함수 날짜 함수
+sysdate
+sysdate 함수는 시스템의 현재 날짜를 반환한다.
+next_day(sysdate, 'wed')
+-현재의 날짜를 기준으로 다음에 오늘 수요일을 구하게 된다.
+요일에 해당하는 숫자를 이용할 수 있다.
+일,1 월,2 화,3 수,4 목,5 금,6 토,7
+
+to_number/to_Date/to_char
+
+
+nvl()함수*
+null 값 채워넣기
+
+
+case 조건 함수
+
+평균avg 최대값max 최소값min 합sum 숫자세기count(*)
+
+where(조건) ~ group by ~ having(조건)
+
+where절 사용하기 
+-일반적으로 비교연산자를 사용한다. 
+-이때 사용되는 비교연산자는 =,<,>,<=,>=,<>의 6가지이다.
+-특히 '<>'는 
+
+db 용량에 한계가 있다. 
+관리하는 것을 다 정리해놓는다. 
+ex) 인간관계 
+
+
+4장 조인
+
+CROSS 조인
+select student.*, enrol.* from student cross join enrol;
+'select student.*,enrol.* 
+from student cross join enrol;'
+
+join조인
+select student.stu_no, stu_name from student, enrol 
+where student.stu_no = enrol.stu_no and
+sub_no = 101;
+
+EQUI 조인
+2개 이상의 테이블에 관련 있는 공통 열의 값을 이용하여 논리적으로 결합하는 연산이 수행되는 조인
+select student.stu_no,stu_name,stu_dept,enr_grade
+from student, enrol
+where student.stu_no = enrol.stu_no;
+
+natural join / join enrol using / join enrol on
+
+
+Non-EQUI
+EQUI를 쓰지 않고 betweend을 사용하여 조인
+
+Self 조인
+같은 테이블간의 조인, 테이블의 별칭을 사용함 
+select a.empno as 사원번호, a.ename as 사원이름, 
+b.empno as 상급자사원번호, b.ename as 상급자이름
+from emp a, emp b
+where a.mgr = b.empno
+
+Outer 조인
+rigth outer
+life outer
+full outer 
+
+부질의 
+질문을 한 번 더한당
+
+부징의의 질의문을 조인 질의로 표현 가능하다.
+
+제 5장
+
+DDL(데이터 정의)
+DML(데이터 조작어)
+DCL(데이터 제어어)
+
+insert
+	새로운 데이터를 테이블에 삽입하는 연산
+
+#단일 튜블 삽입
+	테이블 생성
+	create table ~
+	
+	행삽입	(insert)
+	insert into ~ 
+	values (~)
+	
+	부질의 값 삽입 단 부질의 결과의 열의 위치 및 수가 테이블과 일치하여야 한다.
+	insert into ~
+	select ~
+	
+	기존 테이블 수정(update)
+	update ~
+	set ~
+	
+	조건에 맞는 아이들만 수정
+	update (테이블)
+	set ~
+	where (조건)
+	
+	
+	데이타 지우기 (delete)
+	delete ~
+	from ~
+	where ~
+	
+	테이블 내의 모든 데이터가 삭제
+	delete from ~
+	
+	테이블 지우기
+	drop table
+
+트랜잭션
+
+	삭제된 데이터 복구
+	rollback;
+	
+	
+	create table새로운 테이블이 생성 되면 자동적으로 롤백 기능 상실 . 
+	commit -완료
+	
