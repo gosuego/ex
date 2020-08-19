@@ -20,3 +20,17 @@ maigin-left:50px;
 }
 
 padding
+
+border 보통 1가지만 쓴다.
+border style mdn/검색
+
+*{
+/*전체를 적용한다.*/
+border: 1px dashed black;  
+}
+
+class
+요소를 가리킬 수 있으면서 겹칠 수 있는 것 그게 클래스이다.
+
+(.) =class
+(#) = id 
